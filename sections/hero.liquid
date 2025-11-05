@@ -1,0 +1,144 @@
+
+
+<style>
+  .hero { 
+    background: linear-gradient(180deg, #C9E3FA 0%, #EDF3F9 100%);
+  }
+
+  .first-benefit-text {
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+  
+  @media (min-width: 768px) {
+    .first-benefit-text {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+  
+
+</style>
+<div class="hero section-{{ section.id }}-padding">
+  {% assign hero_heading = section.blocks[0].settings.heading %}
+  {% assign hero_description = section.blocks[0].settings.description %}
+
+  <div class="page-width">
+    <div class="tw-flex tw-flex-[blue] tw-flex-col md:tw-flex-row tw-pb-[64px] md:tw-pt-[96px] tw-pt-[96px]">
+      <div
+        id="left-content"
+        class="
+          tw-w-full tw-flex tw-flex-col tw-gap-12 tw-justify-center
+          md:tw-pr-[64px]
+        "
+      >
+        <h2 class="md:tw-text-[48px] tw-text-[32px] tw-font-semibold tw-leading-none tw-text-center md:tw-text-left">
+          {{ hero_heading }}
+        </h2>
+        <button class="tw-bg-[#309FF7] tw-w-full tw-text-white tw-py-5 tw-rounded-full">Discover Groov</button>
+
+        <div
+          class="
+            tw-flex tw-flex-col tw-items-center tw-text-center tw-px-[24px] tw-gap-3
+            md:tw-items-start md:tw-text-left md:tw-px-[0px] md:tw-flex-row md:tw-items-center md:tw-gap-4
+          "
+        >
+          <img src="{{ 'new-stars.svg' | asset_url }}" alt="hero" loading="lazy" width="72" height="auto">
+          <p class="md:tw-text-[15px] tw-text-[17px] tw-leading-none tracking-normal">{{ hero_description }}</p>
+        </div>
+      </div>
+      <div id="right-content" class="tw-w-full ">
+        <img src="{{ 'new-hero.png' | asset_url }}" alt="hero" loading="lazy" width="583" height="auto">
+      </div>
+    </div>
+
+    <div class="tw-py-[32px] tw-flex  tw-leading-tight tw-font-normal tw-text-[#49566E]
+                md:tw-gap-12 md:tw-justify-start tw-justify-between
+      ">
+      {% for block in section.blocks %}
+        {% if block.type == 'benefit' %}
+         {% assign benefit_index = benefit_index | plus: 1 %}
+          <div
+            id="item-benefit"
+            class=" md:!tw-flex-initial tw-flex-1 tw-items-center tw-flex-col tw-justify-center tw-flex tw-gap-3 tw-text-center md:tw-flex-row"
+            {{ block.shopify_attributes }}
+          >
+            <img
+              src="{{ block.settings.icon | default: 'HSA.svg' | asset_url }}"
+              alt="{{ block.settings.text }}"
+              loading="lazy"
+              width="30"
+              height="auto"
+            >
+            <p class="{% if benefit_index == 1 %}first-benefit-text{% endif %}">{{ block.settings.text }}</p>
+      
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Hero",
+  "tag": "section",
+  "class": "section",
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Título",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Hero heading",
+          "label": "Título"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "default": "Description text",
+          "label": "Descrição"
+        }
+      ]
+    },
+    {
+      "type": "benefit",
+      "name": "Benefício",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Ícone"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "default": "Texto do benefício",
+          "label": "Texto"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero",
+      "blocks": [
+        {
+          "type": "heading"
+        },
+        {
+          "type": "benefit"
+        },
+        {
+          "type": "benefit"
+        },
+        {
+          "type": "benefit"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

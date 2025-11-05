@@ -1,0 +1,95 @@
+<style>
+  .bg-cta {
+      background-image: url('{{ "bg-groov-otimizado.webp" | asset_url }}');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .bg-cta {
+        background-image: url('{{ "bg-otimizado-mobile.png" | asset_url }}');
+      }
+    }
+</style>
+
+<div class="cta section-{{ section.id }}-padding tw-tracking-normal">
+  <div class="bg-cta md:tw-h-[900px] tw-h-[700px] tw-flex">
+    <div
+      class="page-width md:!tw-py-[96px] !tw-py-[48px] tw-w-full tw-justify-start tw-items-center tw-flex tw-flex-col"
+    >
+      <div id="content-container" class="tw-text-center tw-flex tw-flex-col tw-gap-[16px] tw-items-center ">
+       
+        {% for block in section.blocks %}
+            {% case block.type %}
+
+            {% when 'titulo-gigante' %}
+                <h1 
+                  class="tw-font-semibold tw-text-[32px] md:tw-text-[48px] tw-text-[#2D4B61] tw-px-[32px] md:tw-px-[0px] tw-leading-none"
+                  {{ block.shopify_attributes }}
+                >
+                  {{ block.settings.title }}
+                </h1>
+
+                <h4
+                    class="
+                      tw-font-normal tw-text-[16px]  tw-text-[#55586F] tw-text-[16px]  tw-text-[#55586F] tw-px-[74px] tw-leading-none
+          
+          
+                      md:tw-text-[24px] md:tw-px-[0px]
+                    "
+                  >
+                    {{ block.settings.description }}
+                  </h4>
+
+
+            {% endcase %}
+        {% endfor %}
+
+       
+        <button
+          class="tw-bg-[#36A5FC] tw-py-[14px] md:tw-w-[476px] tw-w-full tw-rounded-full tw-text-[#fff] tw-mt-[16px] tw-font-semibold"
+        >
+          Find Your Groov
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "CTA",
+  "tag": "section",
+  "class": "section",
+  "blocks": [
+    {
+      "type": "titulo-gigante",
+      "name": "Título Gigante",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Título",
+          "default": "Seu título aqui"
+        },
+        {
+            "type": "text",
+            "id": "description",
+            "label": "Descrição",
+            "default": "Seu título aquiss"
+          }
+
+
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "CTA",
+      "blocks": []
+    }
+  ]
+}
+{% endschema %}

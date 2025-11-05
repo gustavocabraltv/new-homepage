@@ -1,0 +1,183 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "landing_banner_N9Jrji": {
+      "type": "landing-banner",
+      "disabled": true,
+      "name": "Landing Banner",
+      "settings": {
+        "image": "shopify://shop_images/Updated_Asset_for_New_Von_LP.png"
+      }
+    },
+    "offer_banner_wUX9Qc": {
+      "type": "offer-banner",
+      "name": "Offer Banner",
+      "settings": {
+        "heading": "☁️ Walking on Clouds? ☁️Feels pretty close",
+        "textarea": "What if your shoes felt like they were made just for you?",
+        "text-color": "#000000",
+        "btn-text": "🔥 Limited-time offer ⌛ $10 OFF — <span>$149</span>  $139",
+        "btn-url": "#"
+      }
+    },
+    "offer_product_4YqzHw": {
+      "type": "offer-product",
+      "name": "Offer Main Product",
+      "settings": {
+        "product": "von-discount-the-everyday",
+        "product-title": "The Everyday, by Groov – Custom Insoles"
+      }
+    },
+    "offer_featured_in_section_GYy7RW": {
+      "type": "offer-featured-in-section",
+      "blocks": {
+        "logo_geim6b": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Group_1000003027.png"
+          }
+        },
+        "logo_qL6G8r": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Vector_da25a4ee-59ba-4f26-963f-876116063535.png"
+          }
+        },
+        "logo_6g8BGW": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Group_1000003026.png"
+          }
+        }
+      },
+      "block_order": [
+        "logo_geim6b",
+        "logo_qL6G8r",
+        "logo_6g8BGW"
+      ],
+      "name": "Offer FeaturedIn Section",
+      "settings": {}
+    },
+    "offer_review_slider_YBRdpz": {
+      "type": "offer-review-slider",
+      "blocks": {
+        "logo_QdaCHw": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/Frame_1000003187.png",
+            "name": "@CharlesJohnson",
+            "position": "UFC Fighter",
+            "textarea": "My Groovs relieved my plantar fasciitis and got me out of a walking boot in the lead-up to my UFC debut. Ensuring I feel great on my feet lets ne put in the work needed to show up strong on fight night."
+          }
+        },
+        "logo_Gd6add": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/von-miller-mvp-super-bowljpg_d963a429-a7bc-4573-b299-e7f8d8d286ac.jpg",
+            "name": "@VonMiller",
+            "position": "Super Bowl MVP",
+            "textarea": "At the beginning of the golf season, we couldn’t use our golf carts and had to walk the whole course. The first time I did it in my golf shoes, my feet were killing me. I switched to the Groov insoles and was good. Gotta have my Groovs in there."
+          }
+        },
+        "logo_bpWWdr": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/1681263700093_a2d22f41-7df5-4de3-82f7-8abb5353be0a.jpg",
+            "name": "@mauriceallen360",
+            "position": "Long Drive World Champ",
+            "textarea": "The stability and consistency Groovs bring to my flat feet on the course can be the difference between winning and losing. So I put them in all my competition shoes and I’ve won 2 world championships with them in. I love Groov!"
+          }
+        },
+        "logo_T8fwng": {
+          "type": "logo",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Frame_1000003187.png",
+            "name": "@CharlesJohnson",
+            "position": "UFC Fighter",
+            "textarea": "My Groovs relieved my plantar fasciitis and got me out of a walking boot in the lead-up to my UFC debut. Ensuring I feel great on my feet lets ne put in the work needed to show up strong on fight night."
+          }
+        }
+      },
+      "block_order": [
+        "logo_QdaCHw",
+        "logo_Gd6add",
+        "logo_bpWWdr",
+        "logo_T8fwng"
+      ],
+      "name": "Offer Review Slider",
+      "settings": {}
+    },
+    "offer_fit_made_section_gR7Gq6": {
+      "type": "offer-fit-made-section",
+      "blocks": {
+        "logo_QbbfVL": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/icon-ai.png",
+            "heading": "Scan your feet using your iPhone",
+            "textarea": "Follow prompts after check-out.\nPowered by ShapeSense technology."
+          }
+        },
+        "logo_Q4dBaH": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/icon-choose.png",
+            "heading": "Choose Your Model & Finish",
+            "textarea": "Pick the model and finish that best match your lifestyle — plus, personalize it with your name engraved for free."
+          }
+        },
+        "logo_9iJYMn": {
+          "type": "logo",
+          "settings": {
+            "image": "shopify://shop_images/icon-shipping.png",
+            "heading": "Get them delivered in under a week",
+            "textarea": "Your custom Groovs are crafted to order and shipped to your door in just a few days."
+          }
+        }
+      },
+      "block_order": [
+        "logo_QbbfVL",
+        "logo_Q4dBaH",
+        "logo_9iJYMn"
+      ],
+      "name": "Offer Fit Made Section",
+      "settings": {
+        "top-text": "Your fit. Your style. Your Groovs.",
+        "heading": "Custom Fit Made Easy"
+      }
+    },
+    "offer_move_section_Pa4NmL": {
+      "type": "offer-move-section",
+      "name": "Offer More Section",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "landing_banner_N9Jrji",
+    "offer_banner_wUX9Qc",
+    "offer_product_4YqzHw",
+    "offer_featured_in_section_GYy7RW",
+    "offer_review_slider_YBRdpz",
+    "offer_fit_made_section_gR7Gq6",
+    "offer_move_section_Pa4NmL"
+  ]
+}

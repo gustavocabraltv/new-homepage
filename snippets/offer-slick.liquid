@@ -1,0 +1,451 @@
+<div class="slick-media-wrapper">
+  <div class="video-wrapper top">
+    <div class="video-box">
+      <img
+        class="pause-image"
+        src="https://cdn.shopify.com/s/files/1/0716/2606/4183/files/iconoir_play-solid.png?v=1757596481"
+      >
+      {% if template contains 'female' %}
+        <video
+          class="main-video"
+          id="video"
+          poster="https://cdn.shopify.com/s/files/1/0716/2606/4183/files/fe-image.png?v=1759152548"
+          src="https://cdn.shopify.com/videos/c/o/v/eae0b960f2084233900f190ed5a0886b.mp4"
+        ></video>
+      {% elsif template contains 'julia-offer' %}
+        <video
+          class="main-video"
+          id="video"
+          poster="https://cdn.shopify.com/s/files/1/0716/2606/4183/files/JULIA.png?v=1759831641"
+          src="https://cdn.shopify.com/videos/c/o/v/08cca41f4c8f48918a6128cc1437d33a.mp4"
+        ></video>
+      {% else %}
+        <video
+          class="main-video"
+          id="video"
+          poster="https://cdn.shopify.com/s/files/1/0716/2606/4183/files/Frame_1000003783_92edefed-d737-447d-9807-bd6175cc9d42.png?v=1758006047"
+          src="https://cdn.shopify.com/videos/c/o/v/ef1ede58db3241dba972e4444e46ea93.mp4"
+        ></video>
+      {% endif %}
+    </div>
+  </div>
+  <div class="offer-slider-image-box"></div>
+  <div class="slider-wrapper">
+    {% if template contains 'no-offer' %}
+    {% elsif template contains 'mygolfspy-offer' %}
+      <span class="mobile-tag-offer-pdp">🔥 Limited-time offer - $15 OFF</span>
+    {% elsif template contains 'julia-offer' %}
+      <span class="mobile-tag-offer-pdp">🔥 Limited-time offer - $20 OFF</span>
+    {% elsif template contains 'nflpa-offer' %}
+      <span class="mobile-tag-offer-pdp">🔥 Limited-time offer - 33% OFF</span>
+    {% else %}
+      <span class="mobile-tag-offer-pdp">🔥 Limited-time offer - $10 OFF ⌛</span>
+    {% endif %}
+    <div id="big" class="big-slider">
+      {% if template contains 'male-banner-offer' or template contains 'nflpa-offer' %}
+        <div
+          class="item main-iamge"
+          data-img-alt-text="{{ media.alt }}"
+        >
+          <div class="image-item">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0716/2606/4183/files/Updated_Asset_for_New_Von_LP.png?v=1759834090"
+            >
+          </div>
+        </div>
+      {% endif %}
+      <div class="item videoBotton video-wrapper" style="display: none;">
+        <div class="video-box">
+          <img
+            class="pause-image"
+            src="https://cdn.shopify.com/s/files/1/0716/2606/4183/files/iconoir_play-solid.png?v=1757596481"
+          >
+          {% if template contains 'female' %}
+            <video
+              class="main-video"
+              id="video"
+              poster="https://cdn.shopify.com/s/files/1/0716/2606/4183/files/fe-image.png?v=1759152548"
+              src="https://cdn.shopify.com/videos/c/o/v/eae0b960f2084233900f190ed5a0886b.mp4"
+            ></video>
+          {% elsif template contains 'julia-offer' %}
+            <video
+              class="main-video"
+              id="video"
+              poster="https://cdn.shopify.com/s/files/1/0716/2606/4183/files/JULIA.png?v=1759831641"
+              src="https://cdn.shopify.com/videos/c/o/v/08cca41f4c8f48918a6128cc1437d33a.mp4"
+            ></video>
+          {% else %}
+            <video
+              class="main-video"
+              id="video"
+              poster="https://cdn.shopify.com/s/files/1/0716/2606/4183/files/Frame_1000003783_92edefed-d737-447d-9807-bd6175cc9d42.png?v=1758006047"
+              src="https://cdn.shopify.com/videos/c/o/v/ef1ede58db3241dba972e4444e46ea93.mp4"
+            ></video>
+          {% endif %}
+        </div>
+      </div>
+      {%- for media in product.media -%}
+        {% if template contains 'male-banner-offer' or template contains 'nflpa-offer' %}
+        {% unless media.alt contains 'GIF' or media.alt contains 'Remove' %}
+          <div
+            class="item"
+            data-img-alt-text="{{ media.alt }}"
+          >
+            <div class="image-item">
+              {% if forloop.index == 1 %}
+                {% if product.metafields.custom.tag_text != blank %}
+                  <div class="formula">
+                    <img
+                      src="https://cdn.shopify.com/s/files/1/0658/1495/4165/files/fi_7180195_1.png?v=1736937567"
+                      class="shield-image"
+                    >
+                    {{ product.metafields.custom.tag_text | metafield_tag }}
+                  </div>
+                {% endif %}
+              {% endif %}
+              <div class="product_feattt"><img src="{{ media | img_url:'master' }}"></div>
+            </div>
+          </div>
+        {% endunless %}
+      {% else %}
+        {% unless media.alt contains 'GIF' %}
+          <div
+            class="item"
+            data-img-alt-text="{{ media.alt }}"
+          >
+            <div class="image-item">
+              {% if forloop.index == 1 %}
+                {% if product.metafields.custom.tag_text != blank %}
+                  <div class="formula">
+                    <img
+                      src="https://cdn.shopify.com/s/files/1/0658/1495/4165/files/fi_7180195_1.png?v=1736937567"
+                      class="shield-image"
+                    >
+                    {{ product.metafields.custom.tag_text | metafield_tag }}
+                  </div>
+                {% endif %}
+              {% endif %}
+              <div class="product_feattt"><img src="{{ media | img_url:'master' }}"></div>
+            </div>
+          </div>
+        {% endunless %}
+      {% endif %}
+      {%- endfor -%}
+    </div>
+    <div id="thumbs" class="thumb-slider">
+      {% if template contains 'male-banner-offer' or template contains 'nflpa-offer' %}
+        <div
+          class="item main-iamge"
+          data-img-alt-text="{{ media.alt }}"
+        >
+          <div class="image-item">
+            <img
+              src="https://cdn.shopify.com/s/files/1/0716/2606/4183/files/Updated_Asset_for_New_Von_LP.png?v=1759834090"
+            >
+          </div>
+        </div>
+      {% endif %}
+      {%- for media in product.media -%}
+        {% if template contains 'male-banner-offer' or template contains 'nflpa-offer' %}
+        {% unless media.alt contains 'GIF' or media.alt contains 'Remove' %}
+          <div class="item">
+            <div class="image-item">
+              <div class="product_feattt1"><img src="{{ media | img_url:'master' }}"></div>
+            </div>
+          </div>
+        {% endunless %}
+      {% else %}
+        {% unless media.alt contains 'GIF' %}
+          <div class="item">
+            <div class="image-item">
+              <div class="product_feattt1"><img src="{{ media | img_url:'master' }}"></div>
+            </div>
+          </div>
+        {% endunless %}
+      {% endif %}
+      {%- endfor -%}
+      <div class="video-wrapper thumb">
+        <div class="video-box">
+          <img
+            class="pause-image"
+            src="https://cdn.shopify.com/s/files/1/0716/2606/4183/files/iconoir_play-solid.png?v=1757596481"
+          >
+          {% if template contains 'female' %}
+            <video
+              class="main-video"
+              id="video"
+              poster="https://cdn.shopify.com/s/files/1/0716/2606/4183/files/fe-image.png?v=1759152548"
+              src="https://cdn.shopify.com/videos/c/o/v/eae0b960f2084233900f190ed5a0886b.mp4"
+            ></video>
+          {% elsif template contains 'julia-offer' %}
+            <video
+              class="main-video"
+              id="video"
+              poster="https://cdn.shopify.com/s/files/1/0716/2606/4183/files/JULIA.png?v=1759831641"
+              src="https://cdn.shopify.com/videos/c/o/v/08cca41f4c8f48918a6128cc1437d33a.mp4"
+            ></video>
+          {% else %}
+            <video
+              class="main-video"
+              id="video"
+              poster="https://cdn.shopify.com/s/files/1/0716/2606/4183/files/Frame_1000003783_92edefed-d737-447d-9807-bd6175cc9d42.png?v=1758006047"
+              src="https://cdn.shopify.com/videos/c/o/v/ef1ede58db3241dba972e4444e46ea93.mp4"
+            ></video>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .slick-media-wrapper .big-slider .image-item img {
+    max-width: 100%;
+    display: flex;
+    height: 250px;
+    object-fit: contain;
+    padding: 40px;
+    width: 100%;
+  }
+  .offer-slider-image-box{
+    margin-bottom: 20px;
+  }
+  .offer-slider-image-box img {
+    max-height: 350px;
+    object-fit: contain;
+    width: 100%;
+    padding: 40px;
+    background: #fff;
+    border-radius: 20px;
+  }
+  .video-wrapper .pause-image {
+    max-width: 90px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    cursor: pointer;
+  }
+  .video-wrapper .video-box{
+    position: relative;
+  }
+  .video-wrapper {
+    margin-bottom: 20px;
+  }
+  .video-wrapper video{
+    width: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+    height: 350px;
+    object-position: center;
+  }
+  .big-slider .video-wrapper video {
+    height: 250px;
+  }
+  .thumb-slider .video-wrapper video {
+    display: flex;
+    height: 66px;
+    object-fit: contain;
+    padding: 7px;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 10px;
+    background: #FFF;
+    border: 1px solid #D0D5DE;
+  }
+  .thumb-slider .video-wrapper .pause-image {
+    max-width: 10px;
+  }
+  .slick-media-wrapper .big-slider .item.slick-slide {
+    margin-right: 30px;
+    background: #fff;
+    border-radius: 20px;
+  }
+  .slick-media-wrapper .big-slider .slick-list {
+    margin-right: -30px;
+  }
+  .slick-media-wrapper .big-slider .image-item{
+    margin: 3px;
+    position: relative;
+  }
+  .slick-media-wrapper .thumb-slider .image-item img {
+    display: flex;
+    max-height: 66px;
+    min-height: 66px;
+    object-fit: contain;
+    padding: 7px;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 10px;
+    background: #FFF;
+    border: 1px solid #D0D5DE;
+  }
+  .slick-media-wrapper .thumb-slider .slick-list {
+    margin-right: -13px;
+  }
+  .slick-media-wrapper .big-slider{
+    width: 100%;
+  }
+  .slick-media-wrapper {
+    width: 100%;
+    overflow: hidden;
+  }
+  .slick-media-wrapper .slider-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+  .slick-media-wrapper .thumb-slider {
+    width: 300px;
+  }
+  .slick-media-wrapper .big-slider .slick-prev{
+    display: none !important;
+  }
+  .slick-media-wrapper .big-slider .slick-next {
+    right: 28px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    position: absolute;
+    max-width: 27px;
+    width: unset;
+    height: unset;
+    cursor: pointer;
+  }
+  .slick-media-wrapper .thumb-slider .slick-slide {
+    margin-right: 13px;
+  }
+  .slick-media-wrapper .thumb-slider .item.slick-slide.slick-current.slick-active img{
+    border: 1px solid #000;
+  }
+  .slick-media-wrapper .formula{
+    text-align: center;
+    color: #FFF;
+    font-family: "SF Pro Display";
+    font-size: 19.29px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 27.819px;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    border-radius: 16.148px;
+    background: #085A46;
+    width: 298.989px;
+    height: 37.201px;
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+    align-items: center;
+  }
+  .slick-media-wrapper .big-slider .image-item img.shield-image {
+    display: flex;
+    max-width: 17px;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    padding: 0;
+  }
+  .slick-media-wrapper .big-slider .slick-dots li button {
+    font-size: 0;
+    background: #B2B2B2;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    display: flex;
+  }
+  .slick-media-wrapper .big-slider .slick-dots li.slick-active button {
+    background: #1c67f3;
+  }
+  .slick-media-wrapper .big-slider .slick-dots li {
+    width: 8px;
+    height: 8px;
+  }
+  .slick-media-wrapper .big-slider .slick-dots{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .mobile-tag-offer-pdp{
+    display: none;
+  }
+  .video-wrapper.thumb.slick-current.slick-active video{
+    border: 1px solid #000;
+  }
+  .slick-media-wrapper .main-iamge .image-item{
+    padding: 0;
+  }
+  .slick-media-wrapper .big-slider .main-iamge .image-item img{
+    padding: 0 !important;
+  }
+  @media(max-width: 1022px){
+    .video-wrapper.top{
+      display: none !important;
+    }
+    .videoBotton{
+      display: flex !important;
+    }
+    .offer-slider-image-box{
+      display: none !important;
+    }
+    .slick-media-wrapper .thumb-slider{
+      display: none !important;
+    }
+    .video-wrapper video {
+      border-radius: 0px;
+    }
+    .big-slider .video-wrapper video {
+      height: 340px;
+    }
+    {% if template contains 'male-banner-offer' or template contains 'nflpa-offer' %}
+      .slick-media-wrapper .big-slider .image-item img {
+        height: unset;
+      }
+    {% else %}
+      .slick-media-wrapper .big-slider .image-item img {
+        height: 300px;
+      }
+    {% endif %}
+    .video-wrapper {
+      margin-bottom: 0;
+    }
+    .video-wrapper .pause-image {
+      max-width: 60px;
+    }
+    .video-wrapper .video-box {
+      width: 100%;
+      overflow: hidden;
+    }
+    .mobile-tag-offer-pdp {
+      display: flex;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: #161616;
+      z-index: 2;
+      padding: 4px 11px;
+      font-weight: 600;
+      font-family: DM Sans !important;
+      color: #fff;
+      letter-spacing: 0;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+    .slick-media-wrapper .main-iamge .image-item img{
+      border-radius: 0px;
+      {% comment %} height: 340px; {% endcomment %}
+      object-fit: contain;
+      {% comment %} background: #e5e5e5; {% endcomment %}
+    }
+    .slick-media-wrapper .main-iamge .image-item{
+      margin: 0;
+    }
+  }
+</style>

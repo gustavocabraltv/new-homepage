@@ -1,0 +1,267 @@
+{% assign product = all_products['von-discount-the-everyday'] %}
+
+<script>
+  $(document).ready(function () {
+    $('.offer-review-slider').on('init reInit afterChange', function (event, slick, currentSlide) {
+      // slick.slideCount = total slides
+      // currentSlide = zero-based index
+      let i = (currentSlide ? currentSlide : 0) + 1;
+      $('.slick-counter').text(i + '/' + slick.slideCount);
+    });
+
+    $('.offer-review-slider').slick({
+      arrows: true,
+      dots: true,
+      speed: 300,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay: false,
+      prevArrow:
+        '<img class="slick-arrow slick-prev" src="https://cdn.shopify.com/s/files/1/0716/2606/4183/files/fe_arrow-up_1.png?v=1757565645">',
+      nextArrow:
+        '<img class="slick-arrow slick-next" src="https://cdn.shopify.com/s/files/1/0716/2606/4183/files/fe_arrow-up.png?v=1757565647">',
+      infinite: true,
+      responsive: [
+        {
+          breakpoint: 750,
+          settings: {
+            slidesToShow: 1,
+          },
+        },
+      ],
+    });
+    $('.big-slider').slick({
+      slidesToShow: 2,
+      slidesToScroll: 1,
+      infinite: true,
+      {% if template contains 'male-banner-offer' or template contains 'nflpa-offer' %}
+        adaptiveHeight: true,
+      {% endif %}
+      arrows: false,
+      prevArrow:
+        '<img class="slick-arrow slick-prev" src="https://cdn.shopify.com/s/files/1/0690/1350/4213/files/svgviewer-png-output_2.png?v=1731400624">',
+      nextArrow:
+        '<img class="slick-arrow slick-next" src="https://cdn.shopify.com/s/files/1/0690/1350/4213/files/svgviewer-png-output_1.png?v=1731400625">',
+      asNavFor: '.thumb-slider',
+      responsive: [
+        {
+          breakpoint: 1023,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            dots: true,
+          },
+        },
+      ],
+    });
+    $('.thumb-slider').slick({
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      infinite: true,
+      vertical: false,
+      asNavFor: '.big-slider',
+      dots: false,
+      focusOnSelect: true,
+      centerMode: false,
+      verticalSwiping: false,
+      arrows: false,
+      responsive: [
+        {
+          breakpoint: 1023,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+          },
+        },
+      ],
+    });
+  });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.pause-image').forEach((image) => {
+        image.addEventListener('click', function () {
+          let video = this.closest('.video-box').querySelector('.main-video');
+
+          video.play(); // Play video when clicking on the image
+          this.style.display = 'none'; // Hide the pause image
+        });
+      });
+
+      document.querySelectorAll('.main-video').forEach((video) => {
+        video.addEventListener('click', function () {
+          this.pause(); // Pause video when clicking on it
+          let pauseImage = this.closest('.video-box').querySelector('.pause-image');
+          pauseImage.style.display = 'block'; // Show the pause image again
+        });
+      });
+
+      const offerBox = document.querySelector('.offer-slider-image-box');
+      const videoWrapperTop = document.querySelector('.video-wrapper.top');
+
+      // function to update main offerBox with given img
+      function updateOfferBox(img) {
+        if (img && offerBox) {
+          offerBox.innerHTML = '';
+          const newImg = document.createElement('img');
+          newImg.src = img.src.replace('width=60', 'width=1000'); // larger version
+          newImg.alt = img.alt || '';
+          newImg.className = 'tw-w-full tw-h-full tw-object-contain tw-max-w-full tw-max-h-full';
+          offerBox.appendChild(newImg);
+        }
+        if (videoWrapperTop) {
+          videoWrapperTop.style.display = 'none';
+        }
+      }
+
+      // 🔹 Handle image thumbs
+      document.querySelectorAll('.thumb-slider .item').forEach((thumb) => {
+        thumb.addEventListener('click', function () {
+          // if it's the video thumb
+          if (this.classList.contains('video-wrapper') && this.classList.contains('thumb')) {
+            this.classList.add('border');
+            if (videoWrapperTop) videoWrapperTop.style.display = 'block';
+            if (offerBox) offerBox.style.display = 'none';
+          } else {
+            // normal image
+            const img = this.querySelector('img');
+            updateOfferBox(img);
+            if (offerBox) offerBox.style.display = 'block';
+          }
+        });
+      });
+
+      // 🔹 Handle slick change
+      $('.thumb-slider').on('afterChange', function (event, slick, currentSlide) {
+        const currentThumb = slick.$slides.get(currentSlide);
+
+        if (currentThumb) {
+          if (currentThumb.classList.contains('video-wrapper') && currentThumb.classList.contains('thumb')) {
+            currentThumb.classList.add('border');
+            if (videoWrapperTop) videoWrapperTop.style.display = 'block';
+            if (offerBox) offerBox.style.display = 'none';
+          } else {
+            const img = currentThumb.querySelector('img');
+            updateOfferBox(img);
+            if (offerBox) offerBox.style.display = 'block';
+          }
+        }
+      });
+    });
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+      let submitBtn = document.querySelectorAll('.custom-atc-offer');
+      if (submitBtn) {
+        submitBtn.forEach(function(submitBtnEle){
+          submitBtnEle.addEventListener('click', function () {
+            let typeOfFinish = "{{ product.type }}";
+            document.body.classList.remove("body-locked");
+            {% if template contains 'no-offer' %}
+              const discountCode = '';
+            {% else %}
+              {% if template contains 'female-offer' %}
+                const discountCode = 'LPF10';
+              {% elsif template contains 'male-offer' or template contains 'male-banner-offer' %}
+                const discountCode = 'LPM10';
+                {% elsif template contains 'mygolfspy-offer' %}
+                const discountCode = 'mygolfspy';
+                {% elsif template contains 'nflpa-offer' %}
+                const discountCode = 'NFLPA';
+                {% elsif template contains 'julia-offer' %}
+                const discountCode = 'JULIA20';
+              {% endif %}
+            {% endif %}
+            const variantId = '{{ product.first_available_variant.id }}';
+            console.log('variantId', variantId)
+            const quantity = 1;
+            const properties = {
+              TypeOfFinish: typeOfFinish,
+              _Weight: "",
+              _PainArea: "",
+              _ShoeSize: "",
+              _AditionalDetails: "",
+              _ShoeType: "",
+              _NonStandardWidth: "",
+              _PlayerID: "",
+              _UserID: "",
+              _FootScanId: "",
+              _Age: "",
+              _Height: "",
+              _LockerShoeID: ""
+            };
+            const encodedProps = btoa(JSON.stringify(properties));
+            const permalink = `/cart/${variantId}:${quantity}?properties=${encodedProps}&discount=${discountCode}&storefront=true`;
+            console.log('Redirecting to:', permalink);
+            window.location.href = permalink;
+          });
+        })
+      }
+      // Select the elements
+      const stickyBtn = document.querySelector('.sticky_ATC_Btn');
+      const target = document.querySelector('.custom-atc-offer.lastBtn');
+      let observer;
+
+      function initObserver() {
+        if (observer) observer.disconnect();
+
+        if (stickyBtn && target) {
+          observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                stickyBtn.classList.remove('active'); // remove class when target not visible
+              } else {
+                stickyBtn.classList.add('active');   // add class when target visible
+              }
+            });
+          }, { threshold: 0.1 });
+
+          observer.observe(target);
+        }
+      }
+
+      window.addEventListener('load', initObserver);
+    });
+
+    {% if template contains 'male-banner-offer' or template contains 'nflpa-offer' %}
+      window.addEventListener('load', function() {
+          const firstThumb = document.querySelector('.thumb-slider [data-slick-index="0"]');
+          if (firstThumb) {
+            firstThumb.click();
+            console.log('Clicked first thumb-slider item');
+          } else {
+            console.log('No thumb-slider item found');
+          }
+      });
+    {% endif %}
+
+    {% comment %} document.addEventListener('DOMContentLoaded', function () {
+      const atcBtn = document.querySelector('.custom-atc-offer');
+
+      if (atcBtn) {
+        atcBtn.addEventListener('click', function (e) {
+          e.preventDefault();
+
+          const discountCode = "LPM10";
+          const variantId = "{{ product.first_available_variant.id }}"; // injected by Liquid
+          const quantity = 1;
+
+          // Properties
+          const properties = {
+            engraving: "Hello",
+            color: "red"
+          };
+
+          // Convert properties into query string
+          const encodedProps = btoa(JSON.stringify(properties));
+
+          // Build permalink (goes to cart page with discount)
+          const permalink = `/cart/${variantId}:${quantity}?properties=${encodedProps}&discount=${discountCode}&storefront=true`;
+
+          console.log("Redirecting to:", permalink);
+          window.location.href = permalink;
+        });
+      }
+    }); {% endcomment %}
+</script>

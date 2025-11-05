@@ -1,0 +1,53 @@
+<style>
+  .offer-show-section {
+    background: linear-gradient(to bottom, #FFFFFF 0%, #76B9FB6B 50%);
+  }
+  .your-show-heading span{
+    color:#11A5FB;
+  }
+</style>
+
+<div class="offer-show-section">
+    <div class="page-width">
+        <div class="inner-container tw-flex tw-flex-col tw-items-center tw-gap-[16px] ">
+            {{ 'Frame 1000002917.svg' | inline_asset_content }}
+            <h4 class="tw-text-[#5F6F89] tw-text-[18px] tw-mb-[8px]">{{ section.settings.top-text }}</h4>
+            <h2 class="tw-font-semibold tw-text-[32px] tw-text-center lg:tw-text-[48px] tw-leading-none your-show-heading">{{ section.settings.heading }}</h2>
+            <span class="tw-font-semibold tw-text-[#101828] tw-text-center tw-text-[16px] lg:tw-text-[18px] tw-px-[12px] lg:tw-w-[78%] tw-mt-[0px]">
+                {{ section.settings.shoe-price }}
+            </span>
+            <img src="{{ "Frame 1000003673.png" | asset_url }}" width="632" height="808">
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+  "name": "Offer Shoe Section",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Top Text",
+      "id": "top-text",
+      "default": "Plush. Cushy. A Hug for Your Feet."
+    },
+    {
+      "type": "html",
+      "label": "Heading",
+      "id": "heading",
+      "default": "Your Shoes. Reimagined."
+    },
+    {
+      "type": "text",
+      "label": "Price",
+      "id": "shoe-price",
+      "default": "Just $149"
+    },
+  ],
+  "presets": [
+    {
+      "name": "Offer Shoe Section"
+    }
+  ]
+}
+{% endschema %}

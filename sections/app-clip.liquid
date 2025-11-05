@@ -1,0 +1,542 @@
+<style>
+  .app-clip-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    {% comment %} padding: 15px; {% endcomment %}
+    {% comment %} min-height: 40vh; {% endcomment %}
+  }
+  a.app-clip-btn {
+    text-decoration: none;
+    min-width: 120px;
+    text-align: center;
+    color: #fff;
+    padding: 10px;
+    border-radius: 30px;
+    line-height: 1;
+    font-family: Proxima Nove;
+    font-weight: 600;
+    background: #1c67f3;
+    font-size: 14px;
+  }
+
+
+
+
+  .scan-section .inner-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  section.scan-section {
+    background: #F4F6F9;
+    width: 100%;
+  }
+  .scan-section img.main-image {
+    display: flex;
+    width: 50%;
+    height: auto;
+    align-self: normal;
+    object-fit: cover;
+  }
+  .scan-section .alert {
+    background: #fff;
+    color: #343F4F;
+    padding: 7px 15px;
+    border-radius: 50px;
+    font-size: 16px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    letter-spacing: 0;
+  }
+  
+  .scan-section h1 {
+    font-size: 32px;
+    margin: 0;
+    letter-spacing: 0;
+    font-weight: 600;
+    line-height: 120%;
+  }
+  
+  .scan-section .instruction {
+    font-size: 16px;
+    color: #515151;
+    margin: 0;
+    line-height: 120%;
+  }
+
+  .scan-section .instruction strong{
+    color: #000;
+    display: inline-flex; 
+    height: 14px;  
+    gap: 2px; 
+  }
+  
+  .scan-section .scan-icon {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    filter: drop-shadow(0px 4px 24px rgba(41, 128, 237, 0.45));
+    margin: 20px 0 0;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  .scan-section .scan-icon:hover {
+    transform: scale(1.05);
+  }
+  
+  .scan-section .qr-box img.qr-outer-image {
+    width: 330px;
+    height: 330px;
+    object-fit: contain;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  
+  .scan-section .time-note {
+    font-size: 0.9rem;
+    margin: 0;
+    color: #555;
+  }
+  .scan-section .inner-content {
+    max-width: 480px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+  }
+  .scan-section .footer-note {
+    font-size: 14px;
+    color: #444E5A;
+    margin: 0;
+    line-height: 150%;
+  }
+  .scan-section .footer-note strong {
+    color: #000;
+  }
+  .scan-section .right-wrapper {
+    width: 50%;
+    height: auto;
+    align-self: normal;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px 0;
+  }
+  {% if template.suffix contains 'app-clip' %}
+    sticky-header.header-wrapper {
+      max-width: 100%;
+      position: relative !important;
+      top: 0;
+      width: 100% !important;
+    }
+    .custom_header {
+      max-width: 100% !important;
+      width: 100% !important;
+      border-radius: 0 !important;
+      margin: 0 !important;
+    }
+  {% endif %}
+  .scan-section.mobile {
+    display: none;
+  }
+  .scan-section .qr-box {
+    position: relative;
+  }
+  .scan-section span#qrcode {
+    width: 200px;
+    height: 200px;
+    {% comment %} background: #000; {% endcomment %}
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    opacity: 0;
+    transform-origin: center;
+    display: inline-block;
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+  }
+
+  .scan-section span#qrcode.animate {
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
+  }
+  @media(min-width: 2000px){
+    .scan-section .right-wrapper {
+      justify-content: center;
+    }
+    .scan-section img.main-image {
+      max-height: 1330px;
+    }
+  }
+  @media(max-width: 989px){
+    .scan-section.desktop {
+      display: none;
+    }
+    .scan-section.mobile {
+      display: block;
+    }
+    .scan-section img.main-image {
+      width: 100%;
+      object-fit: contain;
+      max-width: 260px;
+      margin: 0 auto;
+    }
+    .scan-section .top-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      justify-content: center;
+      background: linear-gradient(to top, #D6E6F9 0%, #FFFFFF 100%);
+      padding-bottom: 50px;
+      padding-top: 20px;
+    }
+    section.scan-section {
+      padding: 0px 0 0;
+    } 
+    .scan-section .scan-card {
+      background: white;
+      border-radius: 28px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      padding: 32px 0 0;
+      width: 100%;
+      max-width: 100%;
+      text-align: center;
+    }
+
+    .scan-section .scan-progress {
+      text-align: left;
+      margin-bottom: 30px;
+      padding: 0 20px;
+    }
+
+    .scan-section .check-circle {
+      color: #4285f4;
+      font-weight: bold;
+      font-size: 18px;
+      width: 14px;
+      height: 14px;
+      display: flex;
+      margin-bottom: 0px;
+    }
+    .scan-section .check-circle svg{
+      width: 14px;
+      height: 14px;
+    }
+
+    .scan-section .progress-step,
+    .scan-section .step-title {
+      color: #4E627F;
+      font-size: 15px;
+      margin-left: 14px;
+    }
+    .scan-section .step-title strong{
+      color: #000;
+    }
+    .scan-section .circle {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      margin-right: 0px;
+      border-radius: 50%;
+      vertical-align: middle;
+    }
+    
+    .scan-section .circle.active {
+      background-color: white;
+      border: 3px solid #1E7CF1;
+    }
+    
+    .scan-section .circle.pending {
+      background-color: #D9DBDE;
+      border: 2px solid #D9DBDE;
+      width: 10px;
+      height: 10px;
+    }
+
+    .scan-section .scan-button {
+      display: block;
+      width: 92%;
+      padding: 14px;
+      margin: 24px auto;
+      border: none;
+      border-radius: 30px;
+      background: linear-gradient(90deg, #3c8df6, #1771e6);
+      color: white;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      transition: 0.3s ease;
+    }
+
+    .scan-section .scan-button:hover {
+      transform: translateY(-2px);
+    }
+
+    .scan-section .time-note {
+        color: #465475;
+        font-size: 14px;
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        justify-content: center;
+    }
+    .scan-section .footer {
+      background: #f1f4f9;
+      padding: 18px;
+      font-size: 13px;
+      color: #444E5A;
+      border-radius: 16px;
+      line-height: 140%;
+    }
+    .scan-section p.ul-box strong{
+      color: #000;
+      display: inline-flex; 
+      height: 14px;
+      gap: 2px;
+    }
+    .scan-section .footer strong{
+      color: #000;
+    }
+    .scan-section .footer .highlight {
+      color: #1e62e8;
+      font-weight: 500;
+    }
+    .scan-section .inner-container {
+      flex-direction: column;
+    }   
+    .scan-section .bottom-wrapper {
+      width: 100%;
+      margin-top: -50px;
+      filter: drop-shadow(0 -8px 12px rgba(10, 79, 166, 0.2));
+    } 
+    .scan-section p.time-note img {
+      display: flex;
+      max-width: 25px;
+    }
+    .scan-section p.ul-box {
+      margin-left: 30px;
+      line-height: 120%;
+    }
+    .scan-section .check-text {
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .scan-section .check-text.one:after{
+      content: '';
+      width: 3px;
+      height: 23px;
+      display: block;
+      background: #4D95F0;
+      position: absolute;
+      top: 27px;
+      left: 5px;
+    }
+    .scan-section .check-text.two:after{
+      content: '';
+      width: 3px;
+      height: 65px;
+      display: block;
+      background: #D9DBDE;
+      position: absolute;
+      top: 27px;
+      left: 5px;
+    }
+    .scan-section .alert {
+      font-size: 14px;
+      padding: 7px 0;
+      border-radius: 0;
+      background: transparent;
+      gap: 5px;
+     } 
+     .scan-section svg.alert-svg {
+      width: 20px;
+      height: 20px;
+    }
+    .scan-section h1 {
+      font-size: 26px;  
+    }
+  }
+</style>
+
+{% if customer %}
+  {% assign customers_first_order_id = customer.orders.first.id %}
+{% else %}
+  <script>
+    //if custmr not looged in then redirect them to login and then redirect back to app-clip page
+    location.href = `/account/login?redirect_url=${encodeURIComponent('/pages/app-clip')}`;
+  </script>
+{% endif %}
+
+{% if customer %}
+<div class="app-clip-section">
+  {% comment %}
+    <a 
+      class="app-clip-btn"
+      target="_blank"
+      href="https://appclip.apple.com/id?p=groov.consumer.Clip&orderid={{ customers_first_order_id }}&authtoken=grv_g%25ub%5En124%252355%252682vrT89" 
+      >
+      App Clip
+    </a>
+    {% endcomment %}
+
+    <section class="scan-section desktop">
+      <div class="inner-container">
+        <div class="right-wrapper">
+          <div class="inner-content">
+            <div class="alert">
+              <svg class="alert-svg" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13 15.5L11 15.5L11 17.5L13 17.5M12 4.5C16.41 4.5 20 8.09 20 12.5C20 16.91 16.41 20.5 12 20.5C7.59 20.5 4 16.91 4 12.5C4 8.09 7.59 4.5 12 4.5ZM12 22.5C13.3132 22.5 14.6136 22.2413 15.8268 21.7388C17.0401 21.2362 18.1425 20.4997 19.0711 19.5711C20.9464 17.6957 22 15.1522 22 12.5C22 9.84784 20.9464 7.3043 19.0711 5.42893C18.1425 4.50035 17.0401 3.76375 15.8268 3.2612C14.6136 2.75866 13.3132 2.5 12 2.5C9.34784 2.5 6.8043 3.55357 4.92893 5.42893C3.05357 7.30429 2 9.84783 2 12.5C2 13.8132 2.25866 15.1136 2.7612 16.3268C3.26375 17.5401 4.00035 18.6425 4.92893 19.5711C5.85752 20.4997 6.95991 21.2362 8.17317 21.7388C9.38642 22.2413 10.6868 22.5 12 22.5ZM13 7.5L11 7.5L11 13.5L13 13.5L13 7.5Z" fill="#1B7BF2"/>
+              </svg>
+              We can't start your Groovs until we have your scans!
+            </div>
+        
+            <h1>Finish your 3D foot scan</h1>
+            <p class="instruction">
+              Scan below to finish your scans <br />
+              (using any <strong><span><svg width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.5906 13.21C8.8556 13.9225 8.0531 13.81 7.2806 13.4725C6.4631 13.1275 5.7131 13.1125 4.8506 13.4725C3.7706 13.9375 3.2006 13.8025 2.5556 13.21C-1.1044 9.4375 -0.564398 3.6925 3.5906 3.4825C4.6031 3.535 5.3081 4.0375 5.9006 4.0825C6.7856 3.9025 7.6331 3.385 8.5781 3.4525C9.7106 3.5425 10.5656 3.9925 11.1281 4.8025C8.7881 6.205 9.3431 9.2875 11.4881 10.15C11.0606 11.275 10.5056 12.3925 9.5831 13.2175L9.5906 13.21ZM5.8256 3.4375C5.7131 1.765 7.0706 0.385 8.6306 0.25C8.8481 2.185 6.8756 3.625 5.8256 3.4375Z" fill="black"/>
+              </svg>
+              </span> iPhone</strong> other than an SE)
+            </p>
+        
+            <img src="https://cdn.shopify.com/s/files/1/0716/2606/4183/files/Frame_1000003395_1_6655cf7b-d360-44f4-9f95-b58a89dbd282.png?v=1756807455" class="scan-icon">
+        
+            <div class="qr-box">
+              <span id="qrcode"></span>
+              <img src="https://cdn.shopify.com/s/files/1/0716/2606/4183/files/Group_1000002978_3.png?v=1756807455" class="qr-outer-image" alt="QR Code" />
+            </div>
+        
+            <p class="footer-note">
+              Our proprietary <strong>ShapeSense</strong> scanner builds a 3D model of your foot in minutes, 
+              using autocapture to ensure it's seamless and easy for you.
+            </p>
+          </div>
+        </div>
+        <img src="{{ section.settings.image | img_url:'' }}" class="main-image">
+      </div>
+    </section>
+
+    <section class="scan-section mobile">
+      <div class="inner-container">
+        <div class="top-wrapper">
+          <div class="alert">
+            <svg class="alert-svg" width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M13 15.5L11 15.5L11 17.5L13 17.5M12 4.5C16.41 4.5 20 8.09 20 12.5C20 16.91 16.41 20.5 12 20.5C7.59 20.5 4 16.91 4 12.5C4 8.09 7.59 4.5 12 4.5ZM12 22.5C13.3132 22.5 14.6136 22.2413 15.8268 21.7388C17.0401 21.2362 18.1425 20.4997 19.0711 19.5711C20.9464 17.6957 22 15.1522 22 12.5C22 9.84784 20.9464 7.3043 19.0711 5.42893C18.1425 4.50035 17.0401 3.76375 15.8268 3.2612C14.6136 2.75866 13.3132 2.5 12 2.5C9.34784 2.5 6.8043 3.55357 4.92893 5.42893C3.05357 7.30429 2 9.84783 2 12.5C2 13.8132 2.25866 15.1136 2.7612 16.3268C3.26375 17.5401 4.00035 18.6425 4.92893 19.5711C5.85752 20.4997 6.95991 21.2362 8.17317 21.7388C9.38642 22.2413 10.6868 22.5 12 22.5ZM13 7.5L11 7.5L11 13.5L13 13.5L13 7.5Z" fill="#1B7BF2"/>
+            </svg>
+            We can't start your Groovs until we have your scans!
+          </div>
+          <h1>Finish your 3D foot scan</h1>
+          <img src="{{ section.settings.image2 | img_url:'' }}" class="main-image">
+        </div>
+        <div class="bottom-wrapper">
+          <div class="check-wrapper">
+            <div class="scan-card">
+              <div class="scan-progress">
+                <div class="check-text one" style="display: flex; align-items: center;">
+                <span class="check-circle">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="12" height="12" rx="6" fill="#4D95F0"/>
+                    <path d="M5.17552 8.31549L3.46777 6.60774L4.24602 5.82949L5.17552 6.76174L7.89252 4.04199L8.67077 4.82024L5.17552 8.31549Z" fill="white"/>
+                  </svg>
+                </span> 
+                <span class="progress-step">Your order is confirmed</span>
+                </div>
+                <div class="check-text two">
+                  <span class="circle active"></span>
+                  <span class="step-title"><strong>Scan your foot with your iPhone</strong></span>
+                  <p class="ul-box">Click below to finish your scans<br>(using any <strong><span><svg width="12" height="14" viewBox="0 0 12 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9.5906 13.21C8.8556 13.9225 8.0531 13.81 7.2806 13.4725C6.4631 13.1275 5.7131 13.1125 4.8506 13.4725C3.7706 13.9375 3.2006 13.8025 2.5556 13.21C-1.1044 9.4375 -0.564398 3.6925 3.5906 3.4825C4.6031 3.535 5.3081 4.0375 5.9006 4.0825C6.7856 3.9025 7.6331 3.385 8.5781 3.4525C9.7106 3.5425 10.5656 3.9925 11.1281 4.8025C8.7881 6.205 9.3431 9.2875 11.4881 10.15C11.0606 11.275 10.5056 12.3925 9.5831 13.2175L9.5906 13.21ZM5.8256 3.4375C5.7131 1.765 7.0706 0.385 8.6306 0.25C8.8481 2.185 6.8756 3.625 5.8256 3.4375Z" fill="black"/>
+              </svg>
+              </span> iPhone</strong> other than an SE)</p>
+                </div>
+                <div class="check-text">
+                  <span class="circle pending"></span>
+                  <span class="progress-step">Receive your Groovs in 7 business days</span>
+                </div>
+              </div>
+
+              {% comment %} <button class="scan-button">Scan Now</button> {% endcomment %}
+              <a 
+                class="app-clip-btn scan-button"
+                target="_blank"
+                href="https://appclip.apple.com/id?p=groov.consumer.Clip&orderid={{ customers_first_order_id }}&authtoken=grv_g%25ub%5En124%252355%252682vrT89" 
+                >
+                Scan Now
+              </a>
+              <p class="time-note"><img src="https://cdn.shopify.com/s/files/1/0716/2606/4183/files/mdi_clock-outline_b96ac75b-e174-481e-af0d-b8493005caa0.png?v=1756807456"> It takes <strong>just five minutes!</strong></p>
+
+              <div class="footer">
+                <p>
+                  Our proprietary <strong>ShapeSense</strong> scanner builds a 3D model of your foot in minutes,
+                  using autocapture to ensure it's seamless and easy for you.<br>
+                  <span class="highlight">We can't start your Groovs until we have your scans!</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+</div>
+
+<script>
+  window.onload = function () {
+    // Inject dynamic data from Shopify (via Liquid)
+    const orderId = "{{ customers_first_order_id }}"; // Adjust namespace/key if needed
+    const authToken = "grv_g%25ub%5En124%252355%252682vrT89"; // Can also be injected dynamically
+
+    // Construct the QR URL
+    const qrUrl = `https://appclip.apple.com/id?p=groov.consumer.Clip&orderid=${orderId}&authtoken=${authToken}`;
+
+    // Generate QR Code
+    const qrContainer = document.getElementById("qrcode");
+    if (qrContainer && orderId) {
+      new QRCode(qrContainer, {
+        text: qrUrl,
+        width: 200,
+        height: 200,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+      });
+    }
+    const qrElement = document.querySelector('#qrcode');
+    setTimeout(() => {
+      qrElement.classList.add('animate');
+    }, 50);
+  };
+</script>
+{% endif %}
+
+
+
+{% schema %}
+  {
+    "name": "App Clip",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Desktop Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "image2",
+        "label": "Mobile Image"
+      }
+    ],
+    "presets": [{"name": "App Clip"}]
+  }
+{% endschema %}

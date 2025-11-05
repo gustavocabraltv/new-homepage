@@ -1,0 +1,268 @@
+<style>
+  section.offer-banner {
+      padding: 10rem 0 40px;
+  }
+  .offer-banner .inner-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      text-align: center;
+  }
+  .offer-banner h2.main-heading {
+      font-size: 65px;
+      line-height: 110%;
+      font-family: DM sans !important;
+      text-align: center;
+      font-weight: 700;
+      letter-spacing: 0;
+      max-width: 800px;
+      color: #101828;
+  }
+  .offer-banner .textarea {
+      font-size: 22px;
+      line-height: 110%;
+      font-family: DM sans !important;
+      text-align: center;
+      font-weight: 600;
+      letter-spacing: 0;
+      color: #11A5FB;
+  }
+  .offer-banner a.banner-btn {
+    background: #11A5FB;
+    font-family: DM Sans !important;
+    letter-spacing: 0;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 140%;
+    padding: 10px 20px;
+    border-radius: 50px;
+    color: {{ section.settings.text-color }};
+  }
+  .offer-banner a.banner-btn span{
+    text-decoration: line-through;
+  }
+  .nickname-popup p{
+    color: #2f3e4c;
+    font-size: 14px;
+    line-height: 100%;
+    font-weight: 400;
+    padding-bottom: 10px;
+    text-align: center;
+    max-width: 340px;
+    margin: 0 auto;
+    padding-top: 7px;
+  }
+  .nickname-popup {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    position: fixed;
+    background: white;
+    min-width: 380px;
+    width: 100%;
+    max-width: 440px;
+    z-index: 10;
+    box-shadow: 0px 0px 50px -10px #000;
+    border-radius: 10px;
+    padding: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .overlay-offer-page {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9;
+  }
+  .finalATC {
+    background: #1c67f3;
+    color: #fff;
+    width: max-content;
+    padding: 5px 20px;
+    cursor: pointer;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border-radius: 70px;
+    margin: 0 auto;
+  }
+  @media(max-width: 1022px){
+    .offer-banner{
+      display: none;
+    }
+  }
+  @media(max-width: 900px){
+      .offer-banner h2.main-heading {
+          font-size: 45px;
+          max-width: 600px;
+      }
+      .offer-banner .textarea {
+          font-size: 18px;
+      }
+      .offer-banner a.banner-btn {
+          font-size: 16px;
+      }
+  }
+  @media(max-width: 550px){
+      .offer-banner h2.main-heading {
+          font-size: 30px;
+          max-width: 370px;
+      }
+      .offer-banner .textarea {
+          font-size: 16px;
+          max-width: 300px;
+      }
+      .offer-banner a.banner-btn {
+          font-size: 14px;
+      }
+      .offer-banner .inner-container {
+          gap: 15px;
+      }
+      .nickname-popup {
+        width: 90%;
+      }
+  }
+  @media(max-width: 380px){
+      .offer-banner h2.main-heading {
+          font-size: 25px;
+          max-width: 310px;
+      }
+      .offer-banner .textarea {
+          font-size: 16px;
+          max-width: 300px;
+      }
+      .offer-banner a.banner-btn {
+          font-size: 14px;
+      }
+      .offer-banner a.banner-btn {
+          font-size: 13px;
+      }
+  }
+</style>
+{% assign product = all_products['von-discount-the-everyday'] %}
+<section class="offer-banner">
+  <div class="page-width">
+    <div class="inner-container">
+      <h2 class="main-heading">{{ section.settings.heading }}</h2>
+      <span class="textarea">{{ section.settings.textarea }}</span>
+      <a class="banner-btn custom-atc-offer" href="#">
+        {{- section.settings['btn-text'] -}}
+      </a>
+      {% comment %} {% if template contains 'no-offer' %}
+      {% else %}
+        {% if template contains 'male-offer' or template contains 'male-banner-offer' or template contains 'nflpa-offer' %}
+          <a
+            class="banner-btn custom-atc-offer"
+            href="#"
+          >
+            {{- section.settings['btn-text'] -}}
+          </a>
+        {% elsif template contains 'female-offer' %}
+          <a
+            class="banner-btn custom-atc-offer"
+            href="#"
+          >
+            {{- section.settings['btn-text'] -}}
+          </a>
+        
+        {% elsif template contains 'mygolfspy-offer' %}
+          <a
+            class="banner-btn custom-atc-offer"
+            href="#"
+          >
+            {{- section.settings['btn-text'] -}}
+          </a>
+        {% elsif template contains 'julia-offer' %}
+          <a
+            class="banner-btn custom-atc-offer"
+            href="#"
+          >
+            {{- section.settings['btn-text'] -}}
+          </a>
+        {% endif %}
+      {% endif %} {% endcomment %}
+    </div>
+  </div>
+</section>
+
+{% if template contains 'offer' %}
+  <div class="overlay-offer-page" style="display: none;"></div>
+  <div class="nickname-popup" style="display: none;">
+    <svg
+      class="cross-svg-btn"
+      fill="#000000"
+      width="800px"
+      height="800px"
+      viewBox="0 0 24 24"
+      id="cross"
+      data-name="Line Color"
+      xmlns="http://www.w3.org/2000/svg"
+      class="icon line-color"
+    >
+      <line id="primary" x1="19" y1="19" x2="5" y2="5" style="fill: none; stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></line><line id="primary-2" data-name="primary" x1="19" y1="5" x2="5" y2="19" style="fill: none; stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></line>
+    </svg>
+    <div class="inner-nick-input-wrap">
+      <label for="NickName">{{ settings['pop-up-heading'] }}</label>
+      <input id="NickName" input-data="NickName" type="text" value="" name="properties[NickName]">
+    </div>
+    <div class="finalATC">Add to cart</div>
+    <p>{{ settings['pop-up-desc'] }}</p>
+  </div>
+  <input
+    id="TypeOfFinish"
+    input-data="TypeOfFinish"
+    type="hidden"
+    value="{{ product.type }}"
+    name="properties[TypeOfFinish]"
+  >
+{% endif %}
+
+<script>
+  
+</script>
+
+{% schema %}
+{
+  "name": "Offer Banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "textarea",
+      "label": "Textarea"
+    },
+    {
+      "type": "color",
+      "id": "text-color",
+      "label": "Button Text Color",
+      "default": "#000"
+    },
+    {
+      "type": "html",
+      "id": "btn-text",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "btn-url",
+      "label": "Button Url"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Offer Banner"
+    }
+  ]
+}
+{% endschema %}

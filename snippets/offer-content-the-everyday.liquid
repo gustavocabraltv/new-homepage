@@ -1,0 +1,62 @@
+{% comment %} 🟡 Grid Bento 01 {% endcomment %}
+<div class=" tw-bg-[#F2F5FA] tw-pb-[64px] lg:tw-pb-[128px] tw-pt-[32px] lg:tw-pt-[32px]">
+  <div class="page-width">
+    <div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 tw-gap-[22px] lg:tw-gap-[32px]">
+      <!-- Div 1 ocupa toda a altura da esquerda -->
+      <div class="tw-w-full tw-h-full tw-flex tw-items-center tw-justify-center tw-bg-[white] tw-p-[32px] tw-rounded-[12px]">
+        <div class="tw-flex tw-flex-col tw-gap-[24px]">
+          <img src="{{ "everyday-01-bento.png" | asset_url }}" alt="Legall" width="500" height="auto">
+          {% comment %} <h3 class="tw-text-[24px] tw-w-[358px] tw-font-semibold "><span class="tw-text-[#28B0FF]">Custom-fit insoles</span> designed to match your rhythm — wherever life takes you.</h3> {% endcomment %}
+          <h3 class="tw-text-[20px] tw-w-[358px] tw-font-semibold" style="max-width: 270px;">
+            <span class="tw-text-[#28B0FF]">Custom-fit insoles</span> designed to match your rhythm—wherever life takes
+            you.
+          </h3>
+        </div>
+      </div>
+
+      <!-- Wrapper da coluna direita com duas divs empilhadas -->
+      <div class="tw-flex tw-flex-col tw-gap-[22px]">
+        <div class="tw-h-[230px] tw-w-full tw-flex tw-items-center tw-justify-center tw-bg-[#fff] tw-rounded-[12px]">
+          <img src="{{ "everyday-02-bento.png" | asset_url }}" alt="Legall" width="430" height="auto">
+        </div>
+        <div class="tw-h-[300px] tw-w-full tw-flex tw-items-center tw-justify-center tw-bg-[#fff] tw-rounded-[12px]">
+          <img src="{{ "everyday-03-bento.png" | asset_url }}" alt="Legall" width="440" height="auto">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% comment %} 🟡 Grid Bento 02 {% endcomment %}
+
+<div class="tw-bg-[#fff] lg:tw-py-[128px] tw-py-[8px]">
+  <div class="page-width">
+    <div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-[1fr_2fr] tw-gap-[22px] lg:tw-gap-[32px] tw-mt-[32px]">
+      <div class="tw-bg-[#F2F5FA] tw-rounded-[18px] tw-flex tw-items-end tw-justify-center tw-aspect-square tw-w-full lg:tw-w-auto">
+        <img src="{{ "Frame 1000003085.png" | asset_url }}" width="320" height="auto">
+      </div>
+    </div>
+    <div
+      class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-1 tw-gap-[22px] lg:tw-gap-[32px] tw-pt-16"
+      style="padding-bottom: 0;"
+    >
+      <div class="lg:tw-aspect-[16/9] tw-aspect-[4/4] tw-bg-[#F2F5FA] tw-relative tw-rounded-[18px] tw-flex tw-items-center tw-justify-center tw-overflow-hidden tw-pt-16">
+        <img
+          src="{{ 'von-miller-bento.png' | asset_url }}"
+          class="tw-max-h-full tw-w-auto"
+          alt=""
+          width=""
+          height=""
+        >
+      </div>
+    </div>
+    <div class="tw-grid tw-grid-cols-1 lg:tw-grid-cols-[1fr_2fr] tw-gap-[22px] lg:tw-gap-[32px] tw-mt-[32px]">
+      <div class="tw-h-[440px] tw-bg-[#F2F5FA] tw-flex tw-justify-center tw-items-center tw-rounded-[18px] lg:tw-col-start-2">
+        <img src="{{ "iphone-insole-bento.png" | asset_url }}" width="520" height="auto">
+      </div>
+      <div class="tw-bg-[#F2F5FA] tw-rounded-[18px] tw-flex tw-items-end tw-justify-center tw-aspect-square tw-w-full lg:tw-w-auto tw-mb-[16px]">
+        <img src="{{ "iphone-hand-bento.png" | asset_url }}" width="320" height="auto" style="padding: 30px 10px;">
+      </div>
+    </div>
+  </div>
+</div>

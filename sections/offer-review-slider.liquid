@@ -1,0 +1,176 @@
+<style>
+  .offer-review-slider-section {
+      padding: 90px 0;
+  }
+  .offer-review-slider-section .page-width{
+      max-width: 1000px
+  }
+  .offer-review-slider-section .card-box {
+      display: flex !important;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+  }
+  .offer-review-slider-section span.playername {
+      color: #000;
+      font-weight: 700;
+      font-size: 21px;
+      line-height: 140%;
+  }
+  .offer-review-slider-section span.position {
+      color: #8B8B8B;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 140%;
+  }
+  .offer-review-slider-section p.textarea {
+      font-size: 24px;
+      color: #000000;
+      font-weight: 400;
+      letter-spacing: 0;
+      line-height: 160%;
+      margin-top: 30px;
+      max-width: 570px;
+  }
+  .offer-review-slider-section .slick-arrow {
+      display: flex;
+      max-width: 50px;
+      top: 50%;
+      transform: translateY(-50%);
+      position: absolute;
+      cursor: pointer;
+  }
+  .offer-review-slider-section .slick-prev {
+      left: 0;
+  }
+  .offer-review-slider-section .slick-next {
+      right: 0;
+  }
+  .offer-review-slider-section .slick-dots{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 50px;
+  }
+  .offer-review-slider-section .slick-dots li button {
+      font-size: 0;
+      width: 100%;
+      height: 100%;
+      background: #D0D7E0;
+      display: flex;
+      border-radius: 100%;
+  }
+  .offer-review-slider-section .slick-dots li {
+      border-radius: 100%;
+      width: 10px;
+      height: 10px;
+  }
+  .offer-review-slider-section .slick-dots li.slick-active button {
+      background: #3D3D3D;
+  }
+  .offer-review-slider-section .slick-counter{
+    display: none;
+  }
+  .offer-review-slider-section img.block-image {
+    border-radius: 100%;
+    width: 60px;
+    height: 60px;
+  }
+  @media(max-width: 768px){
+      .offer-review-slider-section p.textarea {
+          font-size: 18px;
+          max-width: 330px;
+      }
+      .offer-review-slider-section {
+          padding: 40px 0;
+      }
+      .offer-review-slider-section .slick-dots{
+        display: none !important;
+      }
+      .offer-review-slider-section span.playername {
+          font-size: 18px;
+      }
+      .offer-review-slider-section .slick-next {
+          right: 32%;
+          top: unset;
+          bottom: -47px;
+          transform: unset;
+      }
+      .offer-review-slider-section .slick-prev {
+          left: 32%;
+          top: unset;
+          bottom: -47px;
+          transform: unset;
+      }
+      .offer-review-slider-section .slick-counter{
+            display: flex;
+            justify-content: center;
+            margin-top: 25px;
+            color: #000;
+        }
+      .offer-review-slider-section .slick-arrow {
+        max-width: 23px;
+        filter: drop-shadow(3px 3px 3px rgba(0, 0, 0, 0.5));
+      }
+
+  }
+</style>
+<div class="pdp-mobile-block">
+  {% render 'offer-content-the-everyday' %}
+</div>
+<section class="offer-review-slider-section">
+  <div class="page-width">
+    <div class="inner-container offer-review-slider">
+      {% for block in section.blocks %}
+        <div class="card-box">
+          <img class="block-image" src="{{ block.settings.image | img_url:'' }}" width="50" height="50">
+          <span class="playername">{{ block.settings.name }}</span>
+          <span class="position">{{ block.settings.position }}</span>
+          <p class="textarea">{{ block.settings.textarea }}</p>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="slick-counter"></div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Offer Review Slider",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name"
+        },
+        {
+          "type": "text",
+          "id": "position",
+          "label": "Designation"
+        },
+        {
+          "type": "textarea",
+          "id": "textarea",
+          "label": "Textarea"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Offer Review Slider"
+    }
+  ]
+}
+{% endschema %}

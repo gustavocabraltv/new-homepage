@@ -1,0 +1,399 @@
+<style>
+  {% comment %}
+  [4] Dalton Knetch
+  [1] Von Miller
+  {% endcomment %}
+ /* Por padrão, esconde o gradiente em todos os cartões */
+ .cards__item .gradient-to-left {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+ }
+ /* Para o cartão 4, aplica o gradiente branco para transparente */
+ .cards__item[data-card='4'] .gradient-to-left {
+  opacity: 1;
+  background: linear-gradient(90deg, #FFF 0%, rgba(255, 255, 255, 0.00) 100.88%);
+ }
+ /* Para o cartão 1, aplica o fundo azul */
+ .cards__item[data-card='1'] .gradient-to-left {
+  opacity: 1;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.00) 0%, #FFF 100%);
+ }
+  {% comment %} .cards__item[data-card='2'] .gradient-to-left,
+  .cards__item[data-card='3'] .gradient-to-left {
+  opacity: 0; /* Torna invisível */
+  } {% endcomment %}
+  .cards {
+  width: 100%;
+  background: #fff; /* ou a cor que preferir */
+  overflow: hidden;
+  position: relative;
+  }
+  .cards__bg {
+  position: absolute;
+  top: -130px;
+  left: 50%; /* Centralizar */
+  transform: translateX(-50%); /* Centralizar */
+  width: 100vw; /* Largura total da viewport */
+  height: 100%; /* Altura com base no conteúdo da seção */
+  background: url('{{ 'gradient-bg.png' | asset_url }}') no-repeat top center;
+  background-size: cover; /* Garante que a imagem cubra todo o espaço */
+  z-index: -1;
+  }
+  .cards__inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  {% comment %} background: red; {% endcomment %}
+  }
+  .cards__heading {
+  {% comment %} font-size: var(--font-heading-2-desktop); {% endcomment %}
+  font-size: var(--font-heading-2-desktop);
+  color: var(--text-title);
+  width: 70%;
+  text-align: center;
+  margin-bottom: 24px;
+  font-weight: 500;
+  }
+  .cards__grid {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  {% comment %} margin: 48px 0; {% endcomment %}
+  position: relative;
+  height: 400px; /* Altura fixa para o container dos cards */
+  width: 100%;
+  padding-top: 32px;
+  }
+  .cards__item {
+  height: 400px;
+  width: 260px; /* Largura fixa para os cards */
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  overflow: hidden;
+  border-radius: 18px;
+  }
+  .cards__item img {
+  height: auto;
+  width: 100%;
+  object-fit: cover;
+  }
+  /* Cards 1, 2, 3, 4 */
+  .cards__item[data-card='1'] {
+  }
+  .cards__item[data-card='2'] {
+  }
+  .cards__item[data-card='3'] {
+  }
+  .cards__item[data-card='4'] {
+  }
+  .hide-gradient::after {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  }
+  .cards__heading[data-heading='1'] {
+  display: block;
+  line-height: 1;
+  opacity: 1;
+  padding-top: 64px;
+  padding-bottom: 24px;
+  }
+  .cards__footer-subtitle[data-footer='2'] {
+  display: block;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  width: 100%;
+  opacity: 0;
+  color: var(--text-title);
+  }
+  .cards__footer {
+  text-align: center;
+  margin-top: 48px;
+  }
+  .cards__footer-title {
+  font-size: 24px;
+  color: var(--text-title);
+  margin-bottom: 8px;
+  }
+  .cards__footer-subtitle {
+  font-size: 20px;
+  color: #666;
+  }
+ 
+  /* Estilos do popup de vídeo - replicado do main-product */
+  .video-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  }
+  .video-popup-overlay.active {
+  display: flex;
+  }
+  .video-popup-container {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  }
+  .video-popup-container video {
+  width: 100%;
+  height: auto;
+  max-height: 90vh;
+  border-radius: 8px;
+  }
+  .custom-btn-close {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  }
+  .custom-btn-close svg {
+  width: 24px;
+  height: 24px;
+  fill: white;
+  }
+  .video-thumbnail {
+  cursor: pointer;
+  }
+ 
+  @media (min-width: 481px) and (max-width: 1440px) {
+  .cards__item {
+  height: 270px;
+  width: 173px; /* Largura fixa para os cards */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  }
+  .cards__grid {
+  padding-top: 50px;
+  }
+  .cards {
+  }
+  }
+  @media screen and (max-width: 480px) {
+  .cards__item[data-card='4'] .gradient-to-left {
+  opacity: 0;
+  background: linear-gradient(90deg, #FFF 0%, rgba(255, 255, 255, 0.00) 100.88%);
+  }
+  /* Para o cartão 1, aplica o fundo azul */
+  .cards__item[data-card='1'] .gradient-to-left {
+  opacity: 0;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.00) 0%, #FFF 100%);
+  }
+  .cards__footer-subtitle[data-footer='2'] {
+  display: block;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 754px;
+  font-size: 24px;
+  width: 100%;
+  opacity: 0;
+  }
+  .cards__heading[data-heading='1'] {
+  margin: 0;
+  display: block;
+  width: 100%;
+  margin-bottom: 56px;
+  }
+  .cards__heading {
+  color: var(--text-title);
+  font-size: var(--font-heading-2-mobile);
+  font-weight: 700;
+  width: 100%;
+  }
+  .cards__grid {
+  position: absolute;
+  top: 220px;
+  }
+  .cards__footer {
+  {% comment %} background: red; {% endcomment %}
+  position: absolute;
+  top: 562px;
+  height: 180px;
+  width: 100%;
+  }
+  .cards__footer-title {
+  margin: 0;
+  }
+  .cards__footer {
+  text-align: center;
+  margin-top: 92px;
+  }
+  .cards__item {
+  opacity: 1 !important; /* Garante visibilidade por padrão */
+  visibility: visible !important; /* Garante visibilidade */
+  }
+  }
+  #video-von {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  }
+ </style>
+ 
+ <div class="cards section-{{ section.id }}-padding">
+ <div class="page-width !tw-pb-[48px] md:!tw-pb-[96px]">
+  <div class="cards__inner">
+  <h1 class="cards__heading" data-heading="1">{{ section.settings.title_1 }}</h1>
+  <div id="video-von" data-video="promo-video" class="video-thumbnail">
+  <div>
+  <img src="{{ 'play-desktop.png' | asset_url }}" alt="Play button" class="tw-hidden md:tw-block" width="500" height="0">
+  <img src="{{ 'play-mobile.png' | asset_url }}" alt="Play button" class="tw-block md:tw-hidden" width="350" height="0">
+  </div>
+  
+  <a href="/collections/shop-all" class="tw-block tw-w-full lg:tw-w-[200px] tw-px-[24px]">
+  <Button class="tw-bg-black tw-text-white tw-px-6 tw-py-[8px] tw-rounded-full tw-mt-[32px] tw-mb-[32px] tw-w-full lg:tw-w-[200px] ">
+  Learn More
+  </Button>
+  </a>
+  </div>
+  
+  {% comment %}
+  <div class="cards__footer">
+  <h4 class="cards__footer-title" data-footer="1">{{ section.settings.footer_title }}</h4>
+  <h4 class="cards__footer-title" data-footer="2">{{ section.settings.footer_subtitle }}</h4>
+  <div class="cards__footer-subtitle">
+  <img src="{{ 'logo-minimal.svg' | asset_url }}" width="auto" height="auto">
+  </div>
+  </div>
+  {% endcomment %}
+  </div>
+ </div>
+ </div>
+ 
+ <!-- Popup de vídeo replicado do main-product -->
+ <div class="video-popup-overlay" id="cards-video-popup">
+  <div class="video-popup-container">
+  <button class="custom-btn-close">
+  <svg viewBox="0 0 24 24">
+  <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+  </svg>
+  </button>
+  <video controls autoplay>
+  <source src="" type="video/mp4">
+  </video>
+  </div>
+ </div>
+ 
+ <script>
+ document.addEventListener('DOMContentLoaded', function() {
+  // URL do vídeo
+  const videoUrl = "{{ 'promo-video.mp4' | asset_url }}";
+  
+  // Criar o overlay do popup (mesmo sistema do main-product)
+  const overlay = document.getElementById('cards-video-popup');
+  
+  // Adicionar click no elemento com data-video
+  const videoDiv = document.querySelector('#video-von[data-video]');
+  
+  if (videoDiv && overlay) {
+  videoDiv.addEventListener('click', function(e) {
+  // Prevenir que clique no botão "Learn More" abra o vídeo
+  if (e.target.closest('a')) {
+  return;
+  }
+  
+  const video = overlay.querySelector('video source');
+  const videoElement = overlay.querySelector('video');
+  
+  video.src = videoUrl;
+  videoElement.load();
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  });
+  }
+  
+  // Fechar popup
+  function closePopup() {
+  overlay.classList.remove('active');
+  document.body.style.overflow = '';
+  const video = overlay.querySelector('video');
+  video.pause();
+  video.currentTime = 0;
+  }
+  
+  // Event listeners para fechar
+  if (overlay) {
+  overlay.querySelector('.custom-btn-close').addEventListener('click', closePopup);
+  overlay.addEventListener('click', function(e) {
+  if (e.target === overlay) {
+  closePopup();
+  }
+  });
+  }
+ });
+ </script>
+ 
+ {% schema %}
+ {
+ "name": "Section Cards",
+ "tag": "section",
+ "class": "section",
+ "settings": [
+  {
+  "type": "text",
+  "id": "title_1",
+  "label": "Título Principal 1",
+  "default": "The best in the world feel at their best in their Groovs"
+  },
+  {
+  "type": "text",
+  "id": "title_2",
+  "label": "Título Principal 2",
+  "default": "The best in the world won't play >without their fully-custom insoles"
+  },
+  {
+  "type": "text",
+  "id": "footer_title",
+  "label": "Título do Rodapé",
+  "default": "Why should you?"
+  },
+  {
+  "type": "text",
+  "id": "footer_subtitle",
+  "label": "Subtítulo do Rodapé",
+  "default": "You deserve the same."
+  }
+ ],
+ "blocks": [
+  {
+  "type": "card",
+  "name": "Card",
+  "limit": 4,
+  "settings": [
+  {
+  "type": "text",
+  "id": "image",
+  "label": "Nome da imagem (sem extensão)"
+  }
+  ]
+  }
+ ],
+ "presets": [
+  {
+  "name": "Section Cards",
+  "blocks": [{ "type": "card" }, { "type": "card" }, { "type": "card" }, { "type": "card" }]
+  }
+ ]
+ }
+ {% endschema %}

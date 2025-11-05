@@ -1,0 +1,74 @@
+<style>
+  .offer-featured-in-section{
+      padding: 20px 10px;
+  }
+  .offer-featured-in-section .block-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      align-items: center;
+  }
+  .offer-featured-in-section img.block-image {
+      margin: 0 auto;
+  }
+  .offer-featured-in-section .page-width {
+      max-width: 800px;
+      padding-top: 30px;
+      padding-bottom: 30px;
+      border: 1px solid #9DA4B2;
+      border-radius: 10px;
+  }
+  @media(max-width: 989px){
+      .offer-featured-in-section{
+          display: none;
+      }
+  }
+  @media(max-width: 768px){
+      .offer-featured-in-section img.block-image {
+          max-width: 130px;
+      }
+  }
+  @media(max-width: 550px){
+      .offer-featured-in-section .block-wrapper {
+          gap: 30px;
+          display: flex;
+          flex-wrap: wrap;
+      }
+  }
+</style>
+<section class="offer-featured-in-section">
+  <div class="page-width">
+    <div class="inner-container">
+      <h4 class="tw-font-semibold tw-text-[18px] tw-mb-[24px] tw-text-center" style="color: #9DA4B2;">Featured In</h4>
+      <div class="block-wrapper">
+        {% for block in section.blocks %}
+          <img class="block-image" src="{{ block.settings.image | img_url:'' }}" width="187" height="26">
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Offer FeaturedIn Section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Offer FeaturedIn Section"
+    }
+  ]
+}
+{% endschema %}

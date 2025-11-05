@@ -1,0 +1,496 @@
+<style>
+  .offer-product{
+      padding: 30px 0;
+  }
+  .offer-product .inner-container{
+    display: flex;
+    align-items: flex-start;
+  }
+  .offer-product .media-wrapper {
+    width: 55%;
+  }
+  .offer-product .offer-info-wrapper {
+    width: 45%;
+  }
+  .offer-product .product-form__submit{
+      font-weight: 600;
+      align-items: center;
+      gap: 5px;
+      font-size: 20px;
+      min-height: 60px;
+      background: #11A5FB;
+      color: #000;
+  }
+  .offer-product .product-form__submit.button:after{
+      content: none;
+  }
+  .offer-product #ATC{
+      max-width: 100%;
+      padding-top: 20px;
+  }
+  .offer-product .price-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+  }
+  .pdp-mobile-block{
+    display: none;
+  }
+  .icon-grid-main-wrapper span{
+    color: #000;
+    font-weight: 600;
+  }
+  .offer-product .custom-atc-offer-btn {
+    font-weight: 600;
+    gap: 5px;
+    font-size: 20px;
+    min-height: 60px;
+    background: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    width: 40%;
+    margin: 0 auto;
+  }
+  .offer-product a.order-now-button {
+    font-weight: 600;
+    gap: 5px;
+    font-size: 20px;
+    min-height: 60px;
+    background: #11A5FB;
+    color: #000;
+    border-radius: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .offer_product_button_wrapper {
+    margin-top: 80px;
+    display: block;
+  }
+  .offer-product div#benefits-icons {
+    margin-top: 30px;
+  }
+  {% if template contains 'offer' %}
+  /* offer paeg CSS starts */
+    body {
+      background-color: #F2F5FA !important;
+    }
+    body.body-locked {
+      overflow: hidden !important;
+    }
+  /* offer paeg CSS ends */
+  {% endif %}
+
+  a.custom-atc-offer.sticky_ATC_Btn {
+    width: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #28B0FF;
+    color: #000;
+    padding: 10px 30px;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0;
+    position: fixed;
+    bottom: 15px;
+    left: 15px;
+    z-index: 5;
+    border-radius: 100px;
+    gap: 5px;
+    box-shadow: 0px 5px 5px 0px #7b7b7b;
+  }
+  a.custom-atc-offer.sticky_ATC_Btn svg {
+    margin-top: -2px;
+  }
+  @media(max-width: 1022px){
+    .offer-product .inner-container{
+      flex-direction: column;
+    }
+    .offer-product div#benefits-icons {
+      margin-top: 10px;
+    }
+    .offer-product .media-wrapper {
+      width: 100%;
+    }
+    .offer-product .offer-info-wrapper {
+      width: 100%;
+      padding: 0 15px;
+    }
+    .pdp-mobile-block{
+      display: block;
+    }
+    .offer-product .inner-container{
+      padding: 0;
+      background: #fff;
+      padding-bottom: 30px;
+    }
+    .offer-product {
+      padding: 58px 0 30px;
+    }
+    .icon-grid-block-wrapper{
+      margin-top: 30px;
+      row-gap: 40px;
+    }
+    .icon-grid-heading{
+      margin-top: 30px;
+      max-width: 360px;
+      font-weight: 700;
+    }
+    .icon-grid-main-wrapper span{
+      font-weight: 400;
+    }
+    .icon-grid-main-wrapper{
+      padding: 0 15px;
+    }
+    .offer-product .page-width.first{
+      padding: 0;
+    }
+    .offer_product_button_wrapper {
+      display: none;
+    }
+    .pdp-mobile-block.padd {
+      border-bottom: 1px solid #D5D5D5;
+      padding-bottom: 30px;
+      margin-bottom: 10px;
+      padding-top: 22px;
+    }
+    .mobile-payment-icon{
+      max-width: 180px;
+    }
+    .offer_product_button_wrapper {
+      display: none;
+    }
+    .offer-product div#benefits-icons {
+      margin-top: 20px;
+    }
+    {% if template contains 'offer' %}
+      /* offer paeg CSS starts */
+        body sticky-header a.btn.groov_btn {
+          display: none;
+        }
+        .header_action_wrapper {
+          margin-left: unset;
+        }
+        .header__heading, .header__heading-link {
+          margin: 0 auto;
+        }
+        .custom_header .header_action_wrapper {
+          width: max-content;
+        }
+        svg.icon.icon-hamburger path {
+            stroke: #000;
+        }
+      /* offer paeg CSS ends */
+      {% endif %}
+  }
+
+  @media(max-width: 989px){
+    a.custom-atc-offer.sticky_ATC_Btn {
+      display: none !important;
+    }
+    a.custom-atc-offer.sticky_ATC_Btn.active {
+      display: flex !important;
+    }
+  }
+</style>
+
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+{% assign product = section.settings.product %}
+<section class="offer-product" id="offer-product">
+  <div class="page-width first">
+    <div class="inner-container">
+      <div class="media-wrapper">
+        <div class="tw-w-full tw-sticky tw-top-[100px] tw-flex tw-flex-col">
+          {% comment %} {% render 'offer-swiper', product: product, section: section %} {% endcomment %}
+          {% render 'offer-slick', product: product, section: section %}
+        </div>
+      </div>
+      <div
+        class="
+          offer-info-wrapper
+          tw-flex tw-flex-col tw-gap-[20px]
+          tw-pl-[0px] lg:tw-pl-[48px]
+        "
+      >
+        <div class="pdp-mobile-block padd">
+          <h2
+            class="tw-text-[28px] tw-font-bold tw-leading-none tw-tracking-wide"
+            style="color: #09AAFB; max-width: 280px;"
+          >
+            Walking on Clouds? Feels pretty close ☁️
+          </h2>
+          <h4
+            class="tw-font-semibold tw-text-black tw-text-[18px] lg:tw-text-[16px] tw-tracking-normal"
+            style=" margin: 16px 0;"
+          >
+            What if your shoes felt like they were made just for you?
+          </h4>
+          <div class="tw-rounded-[12px] tw-border tw-p-[8px]">
+            <h4 class="tw-font-semibold tw-text-[16px] tw-mb-[18px] tw-text-center" style="color: #9DA4B2;">
+              Featured In
+            </h4>
+            <div class="block-wrapper tw-grid tw-grid-cols-3 tw-items-center">
+              <img
+                class="block-image tw-m-0 tw-mx-auto"
+                src="{{ "Group_1000003027.png" | asset_url }}"
+                width="84"
+                height="12"
+              >
+              <img
+                class="block-image tw-m-0 tw-mx-auto"
+                src="{{ "Vector_da25a4ee-59ba-4f26-963f-876116063535.png" | asset_url }}"
+                width="84"
+                height="12"
+              >
+              <img
+                class="block-image tw-m-0 tw-mx-auto"
+                src="{{ "Group_1000003026.png" | asset_url }}"
+                width="84"
+                height="12"
+              >
+            </div>
+          </div>
+        </div>
+        <div class="tw-flex tw-flex-col tw-gap-[8px]">
+          <h2 class="lg:tw-text-[32px] tw-text-[24px] tw-font-semibold tw-leading-none tw-tracking-normal">
+            {{ section.settings.product-title }}
+          </h2>
+          <div class="tw-flex tw-text-black tw-font-semibold">
+            <img src="{{ "GoldVector.svg" | asset_url }}" width="88" height="auto" style="margin-right: 9px;">
+            (5.0)
+          </div>
+          <div class="price-wrapper">
+            <h2 class="tw-mt-[8px] lg:tw-text-[32px] tw-text-[24px] tw-font-semibold">
+              {% if template contains 'no-offer' %}
+              {% elsif template contains 'female-offer' %}
+                $139
+                {% elsif template contains 'male-offer' or template contains 'male-banner-offer' %}
+                  $139
+                  {% elsif template contains 'mygolfspy-offer' %}
+                    $134
+                  {% elsif template contains 'nflpa-offer' %}
+                    $99
+                    {% elsif template contains 'julia-offer' %}
+                      $129
+              {% endif %}
+            </h2>
+            <h2
+              class="tw-mt-[8px] lg:tw-text-[32px] tw-text-[24px] tw-font-semibold"
+              {% if template contains 'no-offer' %}
+                style="color: #11A5FB;"
+              {% else %}
+                style="color: #11A5FB; text-decoration: line-through;"
+              {% endif %}
+            >
+              {{ product.price | money_without_trailing_zeros }}
+            </h2>
+          </div>
+        </div>
+        <div id="short-description" class="tw-flex tw-flex-col tw-gap-[8px]">
+          <p class=" tw-text-black tw-font-semibold tw-text-[16px] lg:tw-text-[18px] ">
+            {{ product.metafields.custom.groov_description }}
+          </p>
+          <p class="tw-font-regular tw-text-[#4D5056] tw-text-[16px] lg:tw-text-[16px]">
+            {{ product.metafields.custom.groov_heading }}
+          </p>
+        </div>
+        <div id="ATC" class="tw-flex tw-flex-col tw-gap-[14px]">
+          {% if template contains 'no-offer' %}
+            <a class="order-now-button custom-atc-offer lastBtn" href="#">Order Now</a>
+          {% else %}
+            <a class="order-now-button custom-atc-offer lastBtn" href="#">Order Now</a>
+            {% comment %} {% if template contains 'male-offer' or template contains 'male-banner-offer' or template contains 'nflpa-offer' %}
+            {% elsif template contains 'female-offer' %}
+              <a class="order-now-button custom-atc-offer lastBtn" href="#">Order Now</a>
+            {% elsif template contains 'mygolfspy-offer' %}
+              <a class="order-now-button custom-atc-offer lastBtn" href="#">Order Now</a>
+            {% elsif template contains 'julia-offer' %}
+              <a class="order-now-button custom-atc-offer lastBtn" href="#">Order Now</a>
+            {% endif %} {% endcomment %}
+            <div class="tw-text-black tw-flex tw-items-center tw-justify-center tw-gap-[8px] tw-text-[12px] lg:tw-text-[14px]">
+              <img src="{{ "secure-18.svg" | asset_url }}" width="18" height="auto">
+              100% Secure Checkout
+              <img
+                src="{{ "payments.svg" | asset_url }}"
+                width="auto"
+                height="20"
+                class="lg:tw-ml-[18px] tw-ml-[2px] mobile-payment-icon"
+              >
+            </div>
+          {% endif %}
+        </div>
+        <div id="benefits-icons" class="tw-flex tw-flex-col tw-gap-[16px]">
+          <div class="tw-flex tw-flex-row tw-gap-[12px]">
+            <img src="{{ "free-shipping-icon.svg"| asset_url }}" width="24" height="24">
+
+            <div class="tw-flex tw-flex-col">
+              <span class="tw-text-[#1D1D1F] tw-font-semibold tw-text-[14px] tw-leading-tight"
+                >Free Shipping Worldwide</span
+              >
+              <span class="tw-text-[#4A526F] tw-text-[13px] tw-leading-tight">Estimated dispatch within 7 days</span>
+            </div>
+          </div>
+
+          <hr class="tw-border-[#D5D5D5] tw-border-t-[1px] tw-m-0">
+
+          <div class="tw-flex tw-flex-row tw-gap-[12px]">
+            <img src="{{ "signature-icon.svg"| asset_url }}" width="24" height="24">
+
+            <div class="tw-flex tw-flex-col">
+              <span class="tw-text-[#1D1D1F] tw-font-semibold tw-text-[14px] tw-leading-tight"
+                >Fast & Easy Personalization</span
+              >
+              <span class="tw-text-[#4A526F] tw-text-[13px] tw-leading-tight">Free name engraving included</span>
+            </div>
+          </div>
+
+          <hr class="tw-border-[#D5D5D5] tw-border-t-[1px] tw-m-0">
+
+          <div class="tw-flex tw-flex-row tw-gap-[12px]">
+            <img src="{{ "shapesense-icon.svg"| asset_url }}" width="24" height="24">
+
+            <div class="tw-flex tw-flex-col">
+              <span class="tw-text-[#1D1D1F] tw-font-semibold tw-text-[14px] tw-leading-tight"
+                >ShapeSense By Groov</span
+              >
+              <span class="tw-text-[#4A526F] tw-text-[13px] tw-leading-tight"
+                >Custom-fit precision with 3D mapping</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="icon-grid-main-wrapper">
+      <h2 class="pdp-mobile-block icon-grid-heading tw-font-semibold tw-tracking-normal tw-m-0 tw-mx-auto tw-text-[28px] tw-text-center lg:tw-w-[726px] tw-w-full tw-leading-tight">
+        The Everyday, by Groov – All-day comfort. Perfect fit.
+      </h2>
+      <div class="tw-grid tw-grid-cols-2 lg:tw-grid-cols-4 tw-gap-[22px] lg:tw-gap-[32px] tw-mt-[64px] tw-tracking-normal icon-grid-block-wrapper">
+        <!-- Coluna 1 -->
+        <div class="tw-flex tw-flex-col tw-items-center tw-gap-[32px]">
+          <div class="tw-flex tw-flex-col tw-items-center lg:tw-w-[60%] tw-w-[100%]">
+            <img
+              src="{{ "new-icon-shoes.svg" | asset_url }}"
+              alt="Icon 1"
+              class="tw-w-[32px] tw-h-[32px]"
+              width="32"
+              height="32"
+            >
+            <span class="tw-text-[16px] tw-mt-[14px] tw-text-center">Compatible with all shoes and sneakers</span>
+          </div>
+        </div>
+
+        <!-- Coluna 2 -->
+        <div class="tw-flex tw-flex-col tw-items-center tw-gap-[32px]">
+          <div class="tw-flex tw-flex-col tw-items-center lg:tw-w-[70%] tw-w-[100%]">
+            <img
+              src="{{ "new-icon-phone.svg" | asset_url }}"
+              alt="Icon 3"
+              class="tw-w-[32px] tw-h-[32px]"
+              width="32"
+              height="32"
+            >
+            <span class="tw-text-[16px] tw-mt-[14px] tw-text-center">AI-Powered 3D scanning for a perfect fit</span>
+          </div>
+        </div>
+
+        <!-- Coluna 3 -->
+        <div class="tw-flex tw-flex-col tw-items-center tw-gap-[32px]">
+          <div class="tw-flex tw-flex-col tw-items-center lg:tw-w-[60%] tw-w-[100%] ">
+            <img
+              src="{{ "new-icon-breath.svg" | asset_url }}"
+              alt="Icon 5"
+              class="tw-w-[32px] tw-h-[32px]"
+              width="32"
+              height="32"
+            >
+            <span class="tw-text-[16px] tw-mt-[14px] tw-text-center">Cushioned, supportive, and breathable</span>
+          </div>
+        </div>
+
+        <!-- Coluna 4 -->
+        <div class="tw-flex tw-flex-col tw-items-center tw-gap-[32px]">
+          <div class="tw-flex tw-flex-col tw-items-center lg:tw-w-[40%] tw-w-[100%]">
+            <img
+              src="{{ "new-icon-tools.svg" | asset_url }}"
+              alt="Icon 7"
+              class="tw-w-[32px] tw-h-[32px]"
+              width="32"
+              height="32"
+            >
+            <span class="tw-text-[16px] tw-mt-[14px] tw-text-center"
+              >Custom made.<br>
+              Every pair.</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="offer_product_button_wrapper">
+      <div class="tw-flex tw-flex-col tw-gap-[14px]">
+        <a
+          class="custom-atc-offer-btn custom-atc-offer"
+          href="#"
+        >Add to cart +</a
+      >
+        {% comment %}
+        {% if template contains 'no-offer' %}
+        {% else %}
+          {% if template contains 'male-offer' or template contains 'male-banner-offer' or template contains 'nflpa-offer' %}
+            href="#"
+          {% elsif template contains 'female-offer' %}
+            href="#"
+          {% elsif template contains 'mygolfspy-offer' %}
+            href="#"
+          {% elsif template contains 'julia-offer' %}
+            href="#"
+          {% endif %}
+        {% endif %}
+        {% endcomment %}
+        <div class="tw-text-black tw-flex tw-items-center tw-justify-center tw-gap-[8px] tw-text-[12px] lg:tw-text-[14px]">
+          <img src="{{ "secure-18.svg" | asset_url }}" width="18" height="auto">
+          100% Secure Checkout
+          <img
+            src="{{ "payments.svg" | asset_url }}"
+            width="auto"
+            height="20"
+            class="lg:tw-ml-[18px] tw-ml-[2px] mobile-payment-icon"
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<a class="custom-atc-offer sticky_ATC_Btn" style="display: none;" href="javascript:void(0)">
+  <svg width="17" height="20" viewBox="0 0 17 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.42202 0.453979C7.34625 0.453979 6.31455 0.881326 5.55387 1.64201C4.79318 2.40269 4.36584 3.43439 4.36584 4.51016V4.98836H1.66741L1.00988 14.894C0.970085 15.4779 1.05076 16.0638 1.2469 16.6152C1.44304 17.1666 1.75045 17.6718 2.15005 18.0995C2.54965 18.5271 3.0329 18.868 3.56979 19.101C4.10667 19.334 4.68573 19.4542 5.27101 19.454H11.573C12.1575 19.4541 12.7358 19.3342 13.2721 19.1017C13.8084 18.8692 14.2912 18.5291 14.6907 18.1024C15.0902 17.6757 15.3978 17.1715 15.5945 16.6211C15.7911 16.0707 15.8727 15.4857 15.8342 14.9025L15.1766 4.9969H12.4782V4.51016C12.4782 3.97749 12.3733 3.45004 12.1694 2.95793C11.9656 2.46581 11.6668 2.01866 11.2902 1.64201C10.9135 1.26536 10.4664 0.96658 9.97425 0.762738C9.48213 0.558896 8.95468 0.453979 8.42202 0.453979ZM11.6243 4.98836V4.51016C11.6243 3.66087 11.2869 2.84637 10.6863 2.24583C10.0858 1.64529 9.27131 1.30791 8.42202 1.30791C7.57273 1.30791 6.75822 1.64529 6.15769 2.24583C5.55715 2.84637 5.21977 3.66087 5.21977 4.51016V4.98836H11.6243ZM5.21977 5.84229H11.6243V6.3205C11.6243 7.16979 11.2869 7.98429 10.6863 8.58483C10.0858 9.18536 9.27131 9.52274 8.42202 9.52274C7.57273 9.52274 6.75822 9.18536 6.15769 8.58483C5.55715 7.98429 5.21977 7.16979 5.21977 6.3205V5.84229ZM4.36584 5.84229V6.3205C4.36584 7.39626 4.79318 8.42797 5.55387 9.18865C6.31455 9.94933 7.34625 10.3767 8.42202 10.3767C9.49778 10.3767 10.5295 9.94933 11.2902 9.18865C12.0509 8.42797 12.4782 7.39626 12.4782 6.3205V5.84229H14.3739L14.9802 14.9538C15.0118 15.4206 14.9471 15.889 14.7902 16.3298C14.6333 16.7706 14.3875 17.1745 14.068 17.5164C13.7485 17.8583 13.3622 18.1309 12.933 18.3173C12.5039 18.5037 12.0409 18.5999 11.573 18.6H5.27101C4.80237 18.6011 4.33852 18.5057 3.90833 18.3198C3.47813 18.134 3.09079 17.8615 2.7704 17.5195C2.45001 17.1775 2.20343 16.7732 2.046 16.3318C1.88856 15.8904 1.82364 15.4213 1.85528 14.9538L2.47011 5.84229H4.36584Z" fill="#121212" stroke="black" stroke-width="0.853933"/>
+  </svg>
+  SHOP NOW
+</a>
+
+{% schema %}
+{
+  "name": "Offer Main Product",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    },
+    {
+      "type": "text",
+      "id": "product-title",
+      "label": "Product Title"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Offer Main Product"
+    }
+  ]
+}
+{% endschema %}

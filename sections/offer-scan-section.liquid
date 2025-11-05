@@ -1,0 +1,51 @@
+
+
+<div class="page-width">
+  <div
+    class="
+      tw-justify-center tw-items-center tw-flex tw-flex-col
+      lg:tw-py-[64px] tw-py-[8px]
+      tw-max-w-[550px] tw-w-full tw-mx-auto
+    "
+  >
+    <h4 class="tw-text-[#5F6F89] tw-text-[18px] tw-mb-[8px]">{{ section.settings.top-text }}</h4>
+    <h1 class="tw-font-semibold tw-text-[32px] tw-text-center lg:tw-text-[48px] tw-leading-none">
+      {{ section.settings.heading }}
+    </h1>
+    <p class="tw-text-[#5F6F89] tw-text-center tw-text-[16px] lg:tw-text-[18px] tw-px-[12px] lg:tw-w-[78%] tw-mt-[18px]">
+      {{ section.settings.textarea }}
+    </p>
+    <img src="{{ "qrcode-home.svg" | asset_url }}" width="300" height="auto">
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Offer Scan Section",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Top Text",
+      "id": "top-text",
+      "default": "How it works"
+    },
+    {
+      "type": "text",
+      "label": "Heading",
+      "id": "heading",
+      "default": "Buy now. Scan in-app. Groov this week..."
+    },
+    {
+      "type": "text",
+      "label": "Textarea",
+      "id": "textarea",
+      "default": "Complete your scan in seconds post-checkout — your custom Groovs arrive in days."
+    },
+  ],
+  "presets": [
+    {
+      "name": "Offer Scan Section"
+    }
+  ]
+}
+{% endschema %}

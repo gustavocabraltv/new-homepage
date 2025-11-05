@@ -1,0 +1,461 @@
+<style>
+    .gallery-swipper {
+      /* Classe vazia, apenas para marcação do Swiper */
+    }
+
+    .thumb-active {
+      border-color: #000 !important;
+      border-width: 2px !important;
+    }
+    .gallery-swipper .swiper-slide {
+      background: #fff;
+      border-radius: 10px;
+  }
+
+    .thumb {
+      transition: all 0.2s ease;
+      border: 1px solid #D0D5DE;
+    }
+
+    .swiper-button-next {
+      margin-right: 32px;
+      width: fit-content!important;
+    }
+    .swiper-button-prev {
+      margin-left: 32px;
+      width: fit-content!important;
+    }
+
+    .swiper-button-next::after,
+    .swiper-button-prev::after {
+      display: none;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        {% comment %} display: none!important; {% endcomment %}
+        {% comment %} display: flex!important; {% endcomment %}
+    }
+
+    /* Estilos para os tabs */
+    .tab-button {
+      transition: all 0.2s ease;
+    }
+
+    .tab-active {
+      background-color: #000 !important;
+      color: #fff !important;
+    }
+
+    .tab-active img {
+      filter: brightness(0) invert(1);
+    }
+
+    .tab-inactive {
+      background-color: transparent;
+      color: #6b7280;
+    }
+
+    .tab-inactive:hover {
+      background-color: #f9fafb;
+    }
+    .swiper-wrapper .mainimage{
+      max-height: 170px;
+    }
+    .video-wrapper .pause-image {
+      max-width: 90px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      cursor: pointer;
+    }
+    .video-wrapper .video-box{
+      position: relative;
+    }
+    .video-wrapper {
+        margin-bottom: 20px;
+    }
+    .video-wrapper video{
+      width: 100%;
+      object-fit: cover;
+      border-radius: 16px;
+      height: 350px;
+      object-position: center;
+    }
+    .offer-slider-image-box{
+      margin-bottom: 20px;
+    }
+    .offer-slider-image-box img {
+      max-height: 350px;
+      object-fit: contain;
+    }
+    {% comment %} .common-hide[imageName="2"]{
+      display: none;
+    } {% endcomment %}
+    @media(max-width: 1022px){
+      .video-wrapper.top{
+        display: none;
+      }
+      .videoBotton{
+        display: flex !important;
+      }
+      .offer-slider-image-box{
+        display: none !important;
+      }
+      .video-wrapper video {
+        border-radius: 0px;
+        height: 300px;
+      }
+      .video-wrapper {
+        margin-bottom: 0;
+      }
+      .video-wrapper .pause-image {
+        max-width: 60px;
+      }
+    }
+</style>
+
+<!-- Swiper principal -->
+<div
+  class="
+    swiper gallery-swipper tw-overflow-hidden
+    lg:tw-w-full
+    lg:tw-max-w-[750px]
+    lg:tw-h-[330px]
+    lg:tw-bg-[#f5f5f7]
+    lg:tw-mb-4
+    lg:tw-rounded-[12px]
+
+    max-lg:tw-mt-[-2px]
+    max-lg:tw-rounded-[0px]
+    max-lg:tw-relative
+    max-lg:tw-w-screen
+    max-lg:tw-left-1/2
+    max-lg:tw-ml-[-50vw]
+    max-lg:tw-mr-[-50vw]
+    max-lg:tw-max-w-none
+    max-lg:tw-h-[320px]
+    max-lg:tw-bg-[#f5f5f7]
+    max-lg:tw-mb-4
+    tw-relative
+  "
+>
+  <div class="video-wrapper top">
+    <div class="video-box">
+      <img
+        class="pause-image"
+        src="https://cdn.shopify.com/s/files/1/0716/2606/4183/files/iconoir_play-solid.png?v=1757596481"
+      >
+      {% if page.handle contains 'female' %}
+        <video
+          class="main-video"
+          id="video"
+          poster="https://cdn.shopify.com/s/files/1/0716/2606/4183/files/Frame_1000003783_459dc58c-2be3-4179-8e7b-4924f9e29f45.png?v=1757676971"
+          src="https://cdn.shopify.com/videos/c/o/v/e21c775b750348a4b2ed47d6fbb03ce7.mp4"
+        ></video>
+      {% else %}
+        <video
+          class="main-video"
+          id="video"
+          poster="https://cdn.shopify.com/s/files/1/0716/2606/4183/files/Frame_1000003783.png?v=1757596519"
+          src="https://cdn.shopify.com/videos/c/o/v/ef1ede58db3241dba972e4444e46ea93.mp4"
+        ></video>
+      {% endif %}
+    </div>
+  </div>
+  <div class="offer-slider-image-box"></div>
+  <div class="swiper-wrapper">
+    {% for image in product.images %}
+      {% unless image.alt contains 'GIF' %}
+        <div class="common-hide swiper-slide tw-flex tw-items-center tw-justify-center tw-p-[40px]">
+          <img
+            src="{{ image | image_url: width: 1000 }}"
+            alt="{{ image.alt | escape }}"
+            class="tw-w-full tw-h-full tw-object-contain tw-max-w-full tw-max-h-full mainimage"
+            loading="lazy"
+            width=""
+            height=""
+          >
+        </div>
+      {% endunless %}
+    {% endfor %}
+    <div class="swiper-slide videoBotton tw-flex tw-items-center tw-justify-center tw-bg-black" style="display: none;">
+      <div class="video-wrapper">
+        <div class="video-box">
+          <img
+            class="pause-image"
+            src="https://cdn.shopify.com/s/files/1/0716/2606/4183/files/iconoir_play-solid.png?v=1757596481"
+          >
+          {% if page.handle contains 'female' %}
+            <video
+              class="main-video"
+              id="video"
+              poster="https://cdn.shopify.com/s/files/1/0716/2606/4183/files/Frame_1000003783_459dc58c-2be3-4179-8e7b-4924f9e29f45.png?v=1757676971"
+              src="https://cdn.shopify.com/videos/c/o/v/e21c775b750348a4b2ed47d6fbb03ce7.mp4"
+            ></video>
+          {% else %}
+            <video
+              class="main-video"
+              id="video"
+              poster="https://cdn.shopify.com/s/files/1/0716/2606/4183/files/Frame_1000003783.png?v=1757596519"
+              src="https://cdn.shopify.com/videos/c/o/v/ef1ede58db3241dba972e4444e46ea93.mp4"
+            ></video>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  <div class="swiper-pagination tw-block lg:tw-hidden"></div>
+
+  <!-- Navigation arrows -->
+  <div class="swiper-button-prev !tw-hidden lg:!tw-flex" style="display: none !important">
+    <div class="tw-w-[50px] tw-h-[50px] tw-rounded-full tw-bg-[white] tw-shadow-md tw-flex tw-justify-center tw-items-center">
+      <img src="{{  'previous-arrow.svg' | asset_url }}" width="10" height="auto">
+    </div>
+  </div>
+
+  <div class="swiper-button-next !tw-hidden lg:!tw-flex" style="display: none !important">
+    <div class="tw-w-[50px] tw-h-[50px] tw-rounded-full tw-bg-[white] tw-shadow-md tw-flex tw-justify-center tw-items-center">
+      <img src="{{  'next-arrow.svg' | asset_url }}" width="10" height="auto">
+    </div>
+  </div>
+</div>
+
+<!-- Tabs 360° e Photos -->
+<div class="tw-flex tw-justify-center tw-mb-4 lg:tw-hidden tw-mt-[12px]">
+  <div class="tw-flex tw-bg-[#EAEFF4] tw-rounded-full tw-p-1">
+    <!-- Botão 360° View -->
+    <button
+      id="btn360"
+      class="tab-button tw-flex tw-items-center tw-gap-3 tw-px-6 tw-py-2 tw-rounded-full tw-text-[14px] tw-font-medium tab-active"
+    >
+      <!-- Ícone 360° -->
+
+      <img src="{{  "360-icon.svg" | asset_url }}" width="21" height="auto">
+      <span>View</span>
+    </button>
+
+    <!-- Botão Photos -->
+    <button
+      id="btnPhotos"
+      class="tab-button tw-flex tw-items-center tw-gap-3 tw-px-6 tw-py-2 tw-rounded-full tw-text-[14px] tw-font-medium tab-inactive"
+    >
+      <!-- Ícone Photos -->
+
+      <img src="{{  "photos-icon.svg" | asset_url }}" width="21" height="auto">
+      <span>Photos</span>
+    </button>
+  </div>
+</div>
+
+<!-- Thumbnails -->
+<div class="tw-justify-start tw-gap-[8px] tw-items-center tw-mt-4 lg:tw-flex tw-hidden">
+  {% for image in product.images %}
+    {% unless image.alt contains 'GIF' %}
+      <div
+        imgAlt="{{ image.alt }}"
+        class="common-hide tw-p-[8px] thumb thumb-images tw-w-[60px] tw-h-[60px] tw-rounded-[6px] tw-overflow-hidden tw-cursor-pointer hover:tw-opacity-80"
+        data-index="{{ forloop.index }}"
+      >
+        <img
+          src="{{ image | image_url: width: 60 }}"
+          alt="{{ image.alt | escape }}"
+          class="tw-w-full tw-h-full tw-object-cover"
+          draggable="false"
+          width=""
+          height=""
+        >
+      </div>
+    {% endunless %}
+  {% endfor %}
+</div>
+
+<script>
+  function initGallery() {
+    if (typeof Swiper === 'undefined') {
+      return;
+    }
+
+    const swiperElement = document.querySelector('.gallery-swipper');
+    const thumbs = document.querySelectorAll('.thumb');
+    const btn360 = document.getElementById('btn360');
+    const btnPhotos = document.getElementById('btnPhotos');
+
+    if (!swiperElement) {
+      return;
+    }
+
+    // Inicializar Swiper
+    const swiper = new Swiper('.gallery-swipper', {
+      loop: true,
+      speed: 300,
+      slidesPerView: 2,
+      spaceBetween: 20,
+      breakpoints: {
+        0: {
+          slidesPerView: 1,
+        },
+        1022: {
+          slidesPerView: 2,
+        },
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      on: {
+        init: function () {
+          updateActiveThumbnail(this.realIndex);
+          updateActiveTab(this.realIndex);
+        },
+        slideChange: function () {
+          updateActiveThumbnail(this.realIndex);
+          updateActiveTab(this.realIndex);
+        },
+      },
+    });
+
+    // Função para atualizar thumbnail ativa
+    function updateActiveThumbnail(activeIndex) {
+      thumbs.forEach((thumb, index) => {
+        thumb.classList.remove('thumb-active');
+        if (index === activeIndex) {
+          thumb.classList.add('thumb-active');
+        }
+      });
+    }
+
+    // Função para atualizar tab ativo baseado no slide
+    function updateActiveTab(activeIndex) {
+      if (activeIndex === 0) {
+        // Slide 1 = 360° ativo
+        setActiveTab(btn360, btnPhotos);
+      } else {
+        // Slide 2+ = Photos ativo
+        setActiveTab(btnPhotos, btn360);
+      }
+    }
+
+    // Função para definir tab ativo visualmente
+    function setActiveTab(activeBtn, inactiveBtn) {
+      activeBtn.className =
+        'tab-button tw-flex tw-items-center tw-gap-3 tw-px-6 tw-py-2 tw-rounded-full tw-text-[14px] tw-font-medium tab-active';
+      inactiveBtn.className =
+        'tab-button tw-flex tw-items-center tw-gap-3 tw-px-6 tw-py-2 tw-rounded-full tw-text-[14px] tw-font-medium tab-inactive';
+    }
+
+    // Event listeners para thumbnails
+    thumbs.forEach((thumb, index) => {
+      thumb.addEventListener('click', function (e) {
+        e.preventDefault();
+        const clickedIndex = parseInt(this.getAttribute('data-index'));
+
+        try {
+          swiper.slideToLoop(clickedIndex, 300);
+        } catch (error) {
+          swiper.slideTo(clickedIndex);
+        }
+      });
+    });
+
+    // Event listener para botão 360°
+    btn360.addEventListener('click', function (e) {
+      e.preventDefault();
+      // Sempre vai para o primeiro slide (360°)
+      try {
+        swiper.slideToLoop(0, 300);
+      } catch (error) {
+        swiper.slideTo(0);
+      }
+    });
+
+    // Event listener para botão Photos
+    btnPhotos.addEventListener('click', function (e) {
+      e.preventDefault();
+      // Se estiver no slide 360° (index 0), vai para o segundo slide
+      // Senão, mantém onde está (já está em Photos)
+      if (swiper.realIndex === 0) {
+        try {
+          swiper.slideToLoop(1, 300);
+        } catch (error) {
+          swiper.slideTo(1);
+        }
+      }
+    });
+
+    // Definir primeira thumbnail como ativa
+    if (thumbs.length > 0) {
+      thumbs[0].classList.add('thumb-active');
+    }
+
+    // Definir 360° como tab ativo inicialmente
+    setActiveTab(btn360, btnPhotos);
+  }
+
+  // Inicializar gallery
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initGallery);
+  } else {
+    if (typeof Swiper !== 'undefined') {
+      initGallery();
+    } else {
+      window.addEventListener('load', initGallery);
+    }
+  }
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.pause-image').forEach((image) => {
+      image.addEventListener('click', function () {
+        let video = this.closest('.video-box').querySelector('.main-video');
+
+        video.play(); // Play video when clicking on the image
+        this.style.display = 'none'; // Hide the pause image
+      });
+    });
+
+    document.querySelectorAll('.main-video').forEach((video) => {
+      video.addEventListener('click', function () {
+        this.pause(); // Pause video when clicking on it
+        let pauseImage = this.closest('.video-box').querySelector('.pause-image');
+        pauseImage.style.display = 'block'; // Show the pause image again
+      });
+    });
+  });
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const thumbs = document.querySelectorAll('.thumb-images');
+    const offerBox = document.querySelector('.offer-slider-image-box');
+    const videoWrapper = document.querySelector('.video-wrapper.top');
+
+    thumbs.forEach((thumb) => {
+      thumb.addEventListener('click', function () {
+        const img = this.querySelector('img'); // get img inside thumb
+        if (img && offerBox) {
+          // replace content of offerBox with a clone of the clicked image
+          offerBox.innerHTML = '';
+          const newImg = document.createElement('img');
+          newImg.src = img.src.replace('width=60', 'width=1000'); // load larger version
+          newImg.alt = img.alt || '';
+          newImg.className = 'tw-w-full tw-h-full tw-object-contain tw-max-w-full tw-max-h-full';
+          offerBox.appendChild(newImg);
+        }
+
+        // hide the video wrapper
+        if (videoWrapper) {
+          videoWrapper.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>

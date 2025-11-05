@@ -1,0 +1,478 @@
+{% comment %} 🔥 SWIPER GALLERY - OPTIMIZED FOR SHOPIFY {% endcomment %}
+<style>
+  /* Reset e isolamento para evitar conflitos com o tema Shopify */
+  .shopify-swiper-container {
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 128px 20px !important;
+    position: relative !important;
+    overflow: visible !important;
+  }
+
+  .shopify-swiper-container * {
+    box-sizing: border-box !important;
+  }
+
+  .shopify-carousel-header {
+    text-align: center !important;
+    margin-bottom: 96px !important;
+  }
+
+  .shopify-carousel-title {
+    font-size: 53px !important;
+    font-weight: 700 !important;
+    color: #1a1a1a !important;
+    margin-bottom: 16px !important;
+    line-height: 1.1 !important;
+    font-family: inherit !important;
+  }
+
+  .shopify-carousel-description {
+    font-size: 18px !important;
+    color: #666 !important;
+    font-weight: 400 !important;
+    font-family: inherit !important;
+  }
+
+  /* Swiper específico para Shopify */
+  .shopify-swiper {
+    width: 100% !important;
+    padding: 0 10px !important;
+    overflow: visible !important;
+    position: relative !important;
+  }
+
+  .shopify-swiper .swiper-wrapper {
+    align-items: stretch !important;
+    position: relative !important;
+  }
+
+  .shopify-swiper .swiper-slide {
+    height: 350px !important;
+    background-color: #e1e5e9 !important;
+    border-radius: 16px !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+    overflow: hidden !important;
+    flex-shrink: 0 !important;
+  }
+
+  .shopify-swiper .swiper-slide img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    border-radius: 16px !important;
+    transition: transform 0.3s ease !important;
+    display: block !important;
+  }
+
+  .shopify-swiper .swiper-slide:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1) !important;
+  }
+
+  .shopify-swiper .swiper-slide:hover img {
+    transform: scale(1.02) !important;
+  }
+
+  /* Slide ativo */
+  .shopify-swiper .swiper-slide-active {
+    transform: scale(1.05) !important;
+    z-index: 2 !important;
+  }
+
+  .shopify-swiper .swiper-slide-active:hover {
+    transform: scale(1.05) translateY(-4px) !important;
+  }
+
+  /* Slides não ativos */
+  .shopify-swiper .swiper-slide:not(.swiper-slide-active) {
+    opacity: 0.7 !important;
+  }
+
+  /* Controles customizados */
+  .shopify-carousel-controls {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 15px !important;
+    margin-top: 40px !important;
+    position: relative !important;
+    z-index: 2 !important;
+  }
+
+  .shopify-carousel-btn {
+    width: 44px !important;
+    height: 44px !important;
+    {% comment %} border: 2px solid #ddd !important; {% endcomment %}
+    background-color: white !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    color: #666 !important;
+    z-index: 10 !important;
+    position: relative !important;
+    {% comment %} box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important; {% endcomment %}
+    font-size: 0 !important;
+  }
+
+  .shopify-carousel-btn:hover {
+    border-color: #999 !important;
+    background-color: #f5f5f5 !important;
+    transform: scale(1.05) !important;
+    color: #333 !important;
+  }
+
+  .shopify-carousel-btn:active {
+    transform: scale(0.95) !important;
+  }
+
+  .shopify-carousel-btn svg {
+    width: 20px !important;
+    height: 20px !important;
+    pointer-events: none !important;
+  }
+
+  .shopify-carousel-counter {
+    font-size: 16px !important;
+    color: #666 !important;
+    font-weight: 600 !important;
+    min-width: 80px !important;
+    text-align: center !important;
+    font-family: inherit !important;
+  }
+
+  /* Esconder controles padrão do Swiper */
+  .shopify-swiper .swiper-button-next,
+  .shopify-swiper .swiper-button-prev {
+    display: none !important;
+  }
+
+  .shopify-swiper .swiper-pagination {
+    display: none !important;
+  }
+  .offer-show-section {
+    background: linear-gradient(to bottom, #FFFFFF 0%, #76B9FB6B 50%);
+  }
+
+  /* Responsividade */
+  @media (max-width: 1024px) {
+    .shopify-carousel-title {
+      font-size: 42px !important;
+    }
+
+    .shopify-swiper-container {
+      padding: 80px 20px !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .shopify-swiper .swiper-slide {
+      height: 280px !important;
+    }
+
+    .shopify-carousel-title {
+      font-size: 36px !important;
+    }
+
+    .shopify-carousel-description {
+      font-size: 16px !important;
+    }
+
+    .shopify-swiper-container {
+      padding: 60px 15px !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .shopify-swiper-container {
+      padding: 64px 10px !important;
+      overflow: hidden !important;
+    }
+
+    .shopify-swiper .swiper-slide {
+      height: 240px !important;
+    }
+
+    .shopify-carousel-title {
+      font-size: 28px !important;
+    }
+
+    .shopify-carousel-header {
+      margin-bottom: 40px !important;
+    }
+
+    .shopify-swiper {
+      padding: 0 5px !important;
+    }
+
+    .shopify-carousel-btn {
+      width: 40px !important;
+      height: 40px !important;
+    }
+
+    .shopify-carousel-btn svg {
+      width: 16px !important;
+      height: 16px !important;
+    }
+  }
+</style>
+
+<!-- Swiper Gallery Section -->
+<div class="tw-overflow-hidden tw-bg-[white]">
+  <div class="shopify-swiper-container">
+    <div class="shopify-carousel-header tw-flex tw-flex-col tw-items-center tw-gap-[16px] ">
+      <h1 class="lg:tw-text-[48px] tw-text-[32px] tw-font-semibold lg:tw-w-[561px] tw-w-full tw-leading-none">
+        {{ section.settings.heading }}
+      </h1>
+      <p class="tw-text-[#3E495C] lg:tw-text-[18px] tw-text-[16px] tw-w-[390px]">
+        {{ section.settings.textarea }}
+      </p>
+    </div>
+
+    <!-- Swiper -->
+    <div class="swiper shopify-swiper ">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <img src="{{ 'slide-01.png' | asset_url }}" alt="Product slide 1" loading="lazy" width="auto" height="auto">
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ 'slide-02.png' | asset_url }}" alt="Product slide 2" loading="lazy" width="auto" height="auto">
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ 'slide-03.png' | asset_url }}" alt="Product slide 3" loading="lazy" width="auto" height="auto">
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ 'slide-04.png' | asset_url }}" alt="Product slide 4" loading="lazy" width="auto" height="auto">
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ 'slide-05.png' | asset_url }}" alt="Product slide 5" loading="lazy" width="auto" height="auto">
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ 'slide-01.png' | asset_url }}" alt="Product slide 6" loading="lazy" width="auto" height="auto">
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ 'slide-02.png' | asset_url }}" alt="Product slide 7" loading="lazy" width="auto" height="auto">
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ 'slide-03.png' | asset_url }}" alt="Product slide 8" loading="lazy" width="auto" height="auto">
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ 'slide-04.png' | asset_url }}" alt="Product slide 9" loading="lazy">
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ 'slide-05.png' | asset_url }}" alt="Product slide 10" loading="lazy">
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ 'slide-01.png' | asset_url }}" alt="Product slide 11" loading="lazy">
+        </div>
+        <div class="swiper-slide">
+          <img src="{{ 'slide-02.png' | asset_url }}" alt="Product slide 12" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+    <!-- Controles customizados -->
+    <div class="shopify-carousel-controls">
+      <button class="shopify-carousel-btn shopify-swiper-button-prev" aria-label="Slide anterior">
+        {% comment %}
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15,18 9,12 15,6"></polyline>
+          </svg>
+        {% endcomment %}
+        <img src="{{ "back-slide.svg" | asset_url }}" width="24" height="24">
+      </button>
+      <span class="shopify-carousel-counter">
+        <span class="shopify-current-slide">1</span> / <span class="shopify-total-slides">12</span>
+      </span>
+      <button class="shopify-carousel-btn shopify-swiper-button-next" aria-label="Próximo slide">
+        {% comment %}
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9,6 15,12 9,18"></polyline>
+          </svg>
+        {% endcomment %}
+        <img src="{{ "next-slide.svg" | asset_url }}" width="24" height="24">
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Aguarda um pouco para garantir que o Swiper está carregado
+    setTimeout(function () {
+      if (typeof Swiper !== 'undefined') {
+        const shopifySwiper = new Swiper('.shopify-swiper', {
+          // Configurações para scroll infinito
+          loop: true,
+          centeredSlides: true,
+          slidesPerView: 5,
+          slidesPerGroup: 1,
+          spaceBetween: 20,
+          grabCursor: true,
+          loopFillGroupWithBlank: true,
+          loopedSlides: 6,
+          loopAdditionalSlides: 2,
+
+          // Breakpoints para responsividade
+          breakpoints: {
+            // Mobile pequeno
+            320: {
+              slidesPerView: 1.5,
+              spaceBetween: 12,
+              centeredSlides: true,
+              loopedSlides: 3,
+            },
+            // Mobile
+            480: {
+              slidesPerView: 2.5,
+              spaceBetween: 15,
+              centeredSlides: true,
+              loopedSlides: 4,
+            },
+            // Tablet
+            768: {
+              slidesPerView: 3,
+              spaceBetween: 15,
+              centeredSlides: true,
+              loopedSlides: 4,
+            },
+            // Desktop pequeno
+            1024: {
+              slidesPerView: 4,
+              spaceBetween: 20,
+              centeredSlides: true,
+              loopedSlides: 5,
+            },
+            // Desktop
+            1200: {
+              slidesPerView: 3,
+              spaceBetween: 30,
+              centeredSlides: true,
+              loopedSlides: 4,
+            },
+          },
+
+          // Navegação customizada
+          navigation: {
+            nextEl: '.shopify-swiper-button-next',
+            prevEl: '.shopify-swiper-button-prev',
+          },
+
+          // Configurações de comportamento
+          speed: 600,
+          allowTouchMove: true,
+          touchRatio: 1,
+          touchAngle: 45,
+          simulateTouch: true,
+          loopFillGroupWithBlank: true,
+          watchOverflow: true,
+          normalizeSlideIndex: true,
+
+          // Keyboard navigation
+          keyboard: {
+            enabled: true,
+            onlyInViewport: true,
+          },
+
+          // Eventos
+          on: {
+            init: function () {
+              updateShopifyCounter(this);
+            },
+            slideChange: function () {
+              updateShopifyCounter(this);
+            },
+          },
+        });
+
+        // Função para atualizar contador no modo loop
+        function updateShopifyCounter(swiperInstance) {
+          const currentSlideEl = document.querySelector('.shopify-current-slide');
+          const totalSlidesEl = document.querySelector('.shopify-total-slides');
+
+          if (currentSlideEl && totalSlidesEl) {
+            // Pega o número total de slides originais (sem duplicatas do loop)
+            const originalSlides = document.querySelectorAll(
+              '.shopify-swiper .swiper-slide:not(.swiper-slide-duplicate)'
+            );
+            const totalSlides = originalSlides.length;
+
+            // Usa realIndex para obter o índice real do slide ativo
+            const currentIndex = swiperInstance.realIndex + 1;
+
+            currentSlideEl.textContent = currentIndex;
+            totalSlidesEl.textContent = totalSlides;
+          }
+        }
+
+        // Adiciona eventos personalizados para melhor UX
+        shopifySwiper.on('touchStart', function () {
+          document.body.style.overflow = 'hidden';
+        });
+
+        shopifySwiper.on('touchEnd', function () {
+          document.body.style.overflow = '';
+        });
+
+        // Adiciona suporte a gestos avançados
+        let startY = 0;
+        shopifySwiper.on('touchStart', function (swiper, event) {
+          startY = event.touches[0].clientY;
+        });
+
+        shopifySwiper.on('touchMove', function (swiper, event) {
+          const currentY = event.touches[0].clientY;
+          const diff = Math.abs(currentY - startY);
+
+          // Se o movimento vertical for maior que horizontal, permite scroll da página
+          if (diff > 50) {
+            swiper.allowTouchMove = false;
+          } else {
+            swiper.allowTouchMove = true;
+          }
+        });
+
+        shopifySwiper.on('touchEnd', function () {
+          shopifySwiper.allowTouchMove = true;
+        });
+      } else {
+        console.warn('Swiper não está disponível. Certifique-se de que a biblioteca Swiper está carregada.');
+      }
+    }, 100);
+  });
+</script>
+
+
+{% schema %}
+{
+  "name": "Offer Feels Slider",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Heading",
+      "id": "heading",
+      "default": "Feels like it was made for you. Because it was."
+    },
+    {
+      "type": "text",
+      "label": "Textarea",
+      "id": "textarea",
+      "default": "Groov was built to fit your needs - regardless of your pace and no matter your style."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Offer Feels Slider"
+    }
+  ]
+}
+{% endschema %}

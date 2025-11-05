@@ -1,0 +1,369 @@
+<style>
+  .between { 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @media (max-width: 481px) { 
+    .between { 
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+
+  #signup-content {
+    padding: 24px;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .input-container-signup {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 8px 8px 32px;
+    width: fit-content;
+    max-width: 100%;
+    border-radius: 100px;
+    overflow: hidden;
+    box-shadow: rgba(100,100,111,0.2) 0 7px 29px 0;
+    background: #fff;
+    box-sizing: border-box;
+  }
+
+  .btn-signup {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  .input-container-signup input {
+    min-width: 0;
+    width: 500px;
+    border: none;
+    outline: none;
+  }
+
+  /* Mobile */
+  @media (max-width: 481px) {
+    .input-container-signup input {
+      flex: 1 1 auto;
+      min-width: 0;
+      width: auto;
+      border: none;
+      outline: none;
+      background: transparent;
+    }
+
+    .input-container-signup {
+      width: 100%;
+    }
+  }
+
+  .input-container-signup input:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  .btn-signup {
+    background: #1C67F3;
+    padding-left: 18px;
+    padding-right: 18px;
+    padding-bottom: 8px;
+    padding-top: 8px;
+    border-radius: 100px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .btn-signup:hover {
+    background: #1557d3;
+  }
+
+  .btn-signup:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+
+  .container-signup {
+    background: white;
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+
+  .hr-vertical {
+    width: 1px;
+    height: 20px;
+    background: #C0C4CC;
+    display: inline-block;
+    margin: 0 8px;
+    color: 000000;
+  }
+
+  .klaviyo_messages {
+    margin-top: 12px;
+    text-align: center;
+  }
+
+  .success_message {
+    color: #10b981;
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .error_message {
+    color: #ef4444;
+    font-size: 14px;
+    padding: 8px;
+  }
+</style>
+
+<div id="tw-bg-[red]" class="container-signup">
+  <div class="page-width">
+    <div>
+      <div class="between">
+        <div id="signup-content">
+          <h1>Subscribe to our newsletter</h1>
+        </div>
+        
+        <form id="klaviyo-newsletter-form" class="klaviyo_form">
+          <input type="hidden" name="g" id="list-id" value="UEg7YJ">
+          <input type="hidden" name="$fields" value="$consent">
+        
+          <div class="input-container-signup">
+            <input 
+              type="email" 
+              name="email" 
+              id="newsletter-email"
+              placeholder="Enter your email" 
+              required
+            >
+            <button class="btn-signup" type="submit" id="submit-btn">SIGN UP</button>
+          </div>
+        
+          <div class="klaviyo_messages">
+            <div class="success_message" style="display:none;">Thanks! Please check your email.</div>
+            <div class="error_message" style="display:none;">Something went wrong. Please try again.</div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section
+  class="tw-bg-[white] tw-border-t-[0.5px] tw-border-[#f5f5f5]"
+  style="box-shadow: 0 -24px 32px 0 rgba(0, 0, 0, 0.02);"
+>
+  <div class="page-width">
+    <div class="">
+      <div class="tw-justify-between tw-items-center tw-flex tw-py-[16px]">
+        <img src="{{ "footer-logo.png" | asset_url }}" width="128" height="auto">
+        <img class="lg:tw-hidden" src="{{ "download-apple.svg" | asset_url }}" width="146" height="auto">
+
+        <div class="lg:tw-flex tw-gap-[48px] tw-hidden tw-text-[#292D34] tw-tracking-none">
+          <div class="tw-flex tw-gap-[8px] tw-text-[16px]">
+            <img src="{{  "phone-icon.svg" | asset_url }}" width="24" height="24">Dedicated Support
+          </div>
+          <div class="hr-vertical" aria-hidden="true">&nbsp;</div>
+          <div class="tw-flex tw-gap-[8px] tw-text-[16px]">
+            <img src="{{  "secure-icon.svg" | asset_url }}" width="24" height="24"> Safe Checkout
+          </div>
+          <div class="hr-vertical" aria-hidden="true">&nbsp;</div>
+          <div class="tw-flex tw-gap-[8px] tw-text-[16px]">
+            <img src="{{  "ai-phone.svg" | asset_url }}" width="24" height="24"> AI-Powered
+          </div>
+          <div class="hr-vertical" aria-hidden="true">&nbsp;</div>
+          <div class="tw-flex tw-gap-[8px] tw-text-[16px]">
+            <img src="{{  "box-icon.svg" | asset_url }}" width="24" height="24"> Delivered in 7 days
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="
+          tw-flex tw-flex-wrap tw-justify-between tw-items-center  tw-text-[13px] tw-text-black
+          tw-border-t-[1px] tw-border-b-[0.5px] tw-border-[#e3e8f074]
+          tw-py-[32px]
+        "
+      >
+        <div class="tw-w-full lg:tw-w-auto tw-flex tw-justify-start">
+          <img src="{{ "credit-cards.svg" | asset_url }}" width="214" height="auto" class="tw-hidden lg:tw-block">
+        </div>
+
+        <div class="tw-w-full lg:tw-w-auto tw-flex tw-items-center tw-justify-between lg:tw-justify-end tw-flex-wrap tw-gap-x-[8px] lg:tw-mt-0">
+          <a href="/pages/faq-02">FAQs</a>
+          <div class="hr-vertical" aria-hidden="true">&nbsp;</div>
+          <a href="/policies/privacy-policy">Privacy Policy</a>
+          <div class="hr-vertical" aria-hidden="true">&nbsp;</div>
+          <a href="/pages/contact">Contact Us</a>
+          <div class="hr-vertical" aria-hidden="true">&nbsp;</div>
+          <a href="#">Accessibility</a>
+        </div>
+      </div>
+
+      <div class="tw-justify-between tw-items-center tw-flex tw-py-[16px] tw-border-b-[0.5px] tw-border-[#e3e8f074]">
+        <div class="tw-flex tw-gap-[24px]">
+          <a href="https://www.instagram.com/groov.official">
+            <img src="{{ "instagram.svg" | asset_url }}" width="28" height="auto">
+          </a>
+
+          <a href="https://www.tiktok.com/@getgroov">
+            <img src="{{ "tiktok.svg" | asset_url }}" width="28" height="auto">
+          </a>
+
+          <a href="https://www.youtube.com/@GroovMe">
+            <img src="{{ "youtube.svg" | asset_url }}" width="28" height="auto">
+          </a>
+        </div>
+      </div>
+
+      <div class="tw-justify-between tw-items-center tw-flex tw-py-[16px]">
+        <img src="{{ "credit-cards.svg" | asset_url }}" width="214" height="auto" class="lg:tw-hidden">
+
+        <a href="https://apps.apple.com/nz/app/groov-custom-insoles/id6733245939">
+          <img src="{{ "download-apple.svg" | asset_url }}" width="146" height="auto" class="tw-hidden lg:tw-block">
+        </a>
+        <p class="tw-text-[#5F6671]">©Groov 2025</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('klaviyo-newsletter-form');
+  const submitBtn = document.getElementById('submit-btn');
+  const emailInput = document.getElementById('newsletter-email');
+  const listId = document.getElementById('list-id').value;
+  const successMsg = form.querySelector('.success_message');
+  const errorMsg = form.querySelector('.error_message');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Esconde mensagens anteriores
+    successMsg.style.display = 'none';
+    errorMsg.style.display = 'none';
+    
+    // Valida email
+    const email = emailInput.value.trim();
+    if (!email || !email.includes('@')) {
+      errorMsg.textContent = 'Please enter a valid email address.';
+      errorMsg.style.display = 'block';
+      return;
+    }
+    
+    // Desabilita o botão durante o envio
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'SENDING...';
+    
+    // Usa a API AJAX do Klaviyo que retorna resposta real
+    fetch('https://manage.kmail-lists.com/ajax/subscriptions/subscribe', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams({
+        'g': listId,
+        'email': email,
+        '$fields': '$consent'
+      })
+    })
+    .then(response => {
+      console.log('Response status:', response.status);
+      console.log('Response ok:', response.ok);
+      return response.json();
+    })
+    .then(data => {
+      console.log('Klaviyo response data:', data);
+      console.log('data.success:', data.success);
+      console.log('data.data:', data.data);
+      console.log('data.errors:', data.errors);
+      
+      // Verifica se há erros primeiro
+      const hasError = data.errors && data.errors.length > 0;
+      
+      if (hasError) {
+        // Erro real do Klaviyo
+        const errorText = data.errors[0];
+        
+        // Traduz erros comuns
+        if (errorText.includes('already') || errorText.includes('subscribed')) {
+          errorMsg.textContent = 'This email is already subscribed.';
+        } else if (errorText.includes('invalid')) {
+          errorMsg.textContent = 'Please enter a valid email address.';
+        } else {
+          errorMsg.textContent = errorText || 'Something went wrong. Please try again.';
+        }
+        
+        errorMsg.style.display = 'block';
+        console.error('Klaviyo error:', data);
+        
+      } else if (data.success === true) {
+        // Sucesso - funciona tanto para 1 quanto 2 etapas
+        // Com 2 etapas, o Klaviyo ainda retorna success: true
+        const isSubscribed = data.data && data.data.is_subscribed === true;
+        
+        if (isSubscribed) {
+          // Inscrito imediatamente (sem verificação)
+          successMsg.textContent = 'Thanks! You are now subscribed to our newsletter.';
+        } else {
+          // Pendente de confirmação (com verificação em 2 etapas)
+          successMsg.textContent = 'Please check your email to confirm your subscription.';
+        }
+        
+        successMsg.style.display = 'block';
+        emailInput.value = '';
+        
+        setTimeout(() => {
+          successMsg.style.display = 'none';
+        }, 5000);
+        
+      } else {
+        // Resposta inesperada
+        errorMsg.textContent = 'Something went wrong. Please try again.';
+        errorMsg.style.display = 'block';
+        console.error('Unexpected response:', data);
+      }
+    })
+    .catch((error) => {
+      // Erro de rede ou CORS
+      console.error('Network error:', error);
+      errorMsg.textContent = 'Connection error. Please try again.';
+      errorMsg.style.display = 'block';
+    })
+    .finally(() => {
+      // Reabilita o botão
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'SIGN UP';
+    });
+  });
+});
+</script>
+
+{% schema %}
+{
+  "name": "custom footer section",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "link_list",
+      "id": "menu1",
+      "label": "Menu"
+    }
+  ],
+  "presets": [
+    {
+      "name": "custom footer section"
+    }
+  ]
+}
+{% endschema %}

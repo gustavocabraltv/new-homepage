@@ -1,0 +1,35 @@
+<section class="landing banner">
+    <div class="inner-container">
+        <img class="banner-image" src="{{ section.settings.image | img_url:'' }}">
+    </div>
+</section>
+
+<style>
+    section.landing.banner {
+        padding-top: 6rem;
+    }
+    @media(max-width: 1022px){
+        .temp-page\.male-banner-offer .offer-product{
+            padding-top: 0;
+        }
+    }
+</style>
+
+
+{% schema %}
+{
+  "name": "Landing Banner",
+  "settings": [
+    {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Landing Banner"
+    }
+  ]
+}
+{% endschema %}
