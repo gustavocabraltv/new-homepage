@@ -1,0 +1,306 @@
+{% if section.settings.enable %}
+    <style>
+      /* Animação de scroll infinito */
+      @keyframes scroll-left-{{ section.id }} {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+  
+      .animate-scroll-{{ section.id }} {
+        animation: scroll-left-{{ section.id }} {{ section.settings.speed }}s linear infinite;
+        display: flex;
+        gap: 3.75rem; /* 28px no mobile */
+      }
+  
+      /* Gap maior no desktop */
+      @media (min-width: 768px) {
+        .animate-scroll-{{ section.id }} {
+          gap: {{ section.settings.gap }}rem;
+        }
+      }
+  
+      /* Opcional: Pausa a animação ao hover */
+      {% if section.settings.pause_on_hover %}
+        .scroll-container-{{ section.id }}:hover .animate-scroll-{{ section.id }} {
+          animation-play-state: paused;
+        }
+      {% endif %}
+  
+      .announcement-bar-{{ section.id }} {
+        background: {{ section.settings.bg_color }};
+        color: {{ section.settings.text_color }};
+      }
+    </style>
+  
+    <div class="announcement-bar-{{ section.id }} tw-w-full tw-py-[{{ section.settings.padding_y }}px] tw-overflow-hidden scroll-container-{{ section.id }} tw-z-50">
+      <div class="animate-scroll-{{ section.id }}">
+        {% comment %} Renderiza os blocos 3 vezes para garantir scroll infinito suave {% endcomment %}
+        {% for i in (1..3) %}
+          {% for block in section.blocks %}
+            <div 
+              class="tw-flex tw-items-center tw-gap-4 tw-whitespace-nowrap tw-flex-shrink-0"
+              {{ block.shopify_attributes }}
+            >
+              {% comment %} Prioridade: 1. Ícone do bloco, 2. Ícone padrão global, 3. shipping-white.svg fallback {% endcomment %}
+              {% if block.settings.icon != blank %}
+                <img 
+                  src="{{ block.settings.icon | image_url: width: 64 }}" 
+                  alt="{{ block.settings.text }}" 
+                  loading="lazy" 
+                  width="{{ section.settings.icon_size }}" 
+                  height="auto"
+                >
+              {% elsif section.settings.default_icon != blank %}
+                <img 
+                  src="{{ section.settings.default_icon | image_url: width: 64 }}" 
+                  alt="{{ block.settings.text }}" 
+                  loading="lazy" 
+                  width="{{ section.settings.icon_size }}" 
+                  height="auto"
+                >
+              {% else %}
+                {% comment %} Ícone fallback para desenvolvimento - usa shipping-white.svg dos assets {% endcomment %}
+                <img 
+                  src="{{ 'shipping-white.svg' | asset_url }}" 
+                  alt="{{ block.settings.text }}" 
+                  loading="lazy" 
+                  width="{{ section.settings.icon_size }}" 
+                  height="auto"
+                >
+              {% endif %}
+              <p class="tw-text-[{{ section.settings.font_size }}px] tw-font-{{ section.settings.font_weight }}">
+                {{ block.settings.text }}
+              </p>
+            </div>
+          {% endfor %}
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+  
+  {% schema %}
+  {
+    "name": "Announcement Scroll",
+    "tag": "section",
+    "class": "section-announcement-scroll",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Visibilidade"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable",
+        "label": "Ativar barra de anúncio",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Ícone Padrão"
+      },
+      {
+        "type": "image_picker",
+        "id": "default_icon",
+        "label": "Ícone padrão para todos os itens",
+        "info": "Este ícone será usado em todos os itens que não tiverem um ícone específico. Se vazio, usa o shipping-white.svg dos assets."
+      },
+      {
+        "type": "header",
+        "content": "Cores"
+      },
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Cor de fundo",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Cor do texto",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "header",
+        "content": "Animação"
+      },
+      {
+        "type": "range",
+        "id": "speed",
+        "label": "Velocidade da animação (segundos)",
+        "min": 10,
+        "max": 60,
+        "step": 5,
+        "default": 30,
+        "info": "Menor = mais rápido"
+      },
+      {
+        "type": "checkbox",
+        "id": "pause_on_hover",
+        "label": "Pausar ao passar o mouse",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "Espaçamento"
+      },
+      {
+        "type": "range",
+        "id": "gap",
+        "label": "Espaço entre itens - Desktop (rem)",
+        "min": 4,
+        "max": 20,
+        "step": 1,
+        "default": 12,
+        "info": "Mobile -  28px fixed (1.75rem). 1 rem ≈ 16px"
+      },
+      {
+        "type": "range",
+        "id": "padding_y",
+        "label": "Padding vertical (px)",
+        "min": 8,
+        "max": 32,
+        "step": 2,
+        "default": 16
+      },
+      {
+        "type": "header",
+        "content": "Tipografia"
+      },
+      {
+        "type": "range",
+        "id": "font_size",
+        "label": "Tamanho da fonte (px)",
+        "min": 12,
+        "max": 24,
+        "step": 1,
+        "default": 14
+      },
+      {
+        "type": "select",
+        "id": "font_weight",
+        "label": "Peso da fonte",
+        "options": [
+          {
+            "value": "normal",
+            "label": "Normal"
+          },
+          {
+            "value": "medium",
+            "label": "Medium"
+          },
+          {
+            "value": "semibold",
+            "label": "Semibold"
+          },
+          {
+            "value": "bold",
+            "label": "Bold"
+          }
+        ],
+        "default": "normal"
+      },
+      {
+        "type": "range",
+        "id": "icon_size",
+        "label": "Tamanho do ícone (px)",
+        "min": 16,
+        "max": 48,
+        "step": 2,
+        "default": 32
+      }
+    ],
+    "blocks": [
+      {
+        "type": "announcement_item",
+        "name": "Item de anúncio",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "icon",
+            "label": "Ícone (opcional)",
+            "info": "Deixe vazio para usar o ícone padrão global ou fallback"
+          },
+          {
+            "type": "text",
+            "id": "text",
+            "label": "Texto",
+            "default": "Free Shipping Worldwide"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Announcement Scroll",
+        "blocks": [
+          {
+            "type": "announcement_item",
+            "settings": {
+              "text": "Free Shipping Worldwide"
+            }
+          },
+          {
+            "type": "announcement_item",
+            "settings": {
+              "text": "HSA/FSA Eligible"
+            }
+          },
+          {
+            "type": "announcement_item",
+            "settings": {
+              "text": "30-Day Money Back Guarantee"
+            }
+          },
+          {
+            "type": "announcement_item",
+            "settings": {
+              "text": "Made in USA"
+            }
+          },
+          {
+            "type": "announcement_item",
+            "settings": {
+              "text": "Custom Fit Technology"
+            }
+          },
+          {
+            "type": "announcement_item",
+            "settings": {
+              "text": "Trusted by Athletes"
+            }
+          },
+          {
+            "type": "announcement_item",
+            "settings": {
+              "text": "Premium Materials"
+            }
+          },
+          {
+            "type": "announcement_item",
+            "settings": {
+              "text": "Fast Delivery"
+            }
+          },
+          {
+            "type": "announcement_item",
+            "settings": {
+              "text": "Eco-Friendly Production"
+            }
+          },
+          {
+            "type": "announcement_item",
+            "settings": {
+              "text": "5-Star Reviews"
+            }
+          }
+        ]
+      }
+    ]
+  }
+  {% endschema %}
+  

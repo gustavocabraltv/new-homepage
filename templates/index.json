@@ -1,6 +1,94 @@
-// Index JSON
 {
     "sections": {
+        // "announcement-scroll": {
+        //     "type": "announcement-scroll",
+        //     "blocks": {
+        //         "announcement_1": {
+        //             "type": "announcement_item",
+        //             "settings": {
+        //                 "text": "Free Shipping Worldwide"
+        //             }
+        //         },
+        //         "announcement_2": {
+        //             "type": "announcement_item",
+        //             "settings": {
+        //                 "text": "HSA/FSA Eligible"
+        //             }
+        //         },
+        //         "announcement_3": {
+        //             "type": "announcement_item",
+        //             "settings": {
+        //                 "text": "30-Day Money Back Guarantee"
+        //             }
+        //         },
+        //         "announcement_4": {
+        //             "type": "announcement_item",
+        //             "settings": {
+        //                 "text": "Made in USA"
+        //             }
+        //         },
+        //         "announcement_5": {
+        //             "type": "announcement_item",
+        //             "settings": {
+        //                 "text": "Custom Fit Technology"
+        //             }
+        //         },
+        //         "announcement_6": {
+        //             "type": "announcement_item",
+        //             "settings": {
+        //                 "text": "Trusted by Athletes"
+        //             }
+        //         },
+        //         "announcement_7": {
+        //             "type": "announcement_item",
+        //             "settings": {
+        //                 "text": "Premium Materials"
+        //             }
+        //         },
+        //         "announcement_8": {
+        //             "type": "announcement_item",
+        //             "settings": {
+        //                 "text": "Fast Delivery"
+        //             }
+        //         },
+        //         "announcement_9": {
+        //             "type": "announcement_item",
+        //             "settings": {
+        //                 "text": "Eco-Friendly Production"
+        //             }
+        //         },
+        //         "announcement_10": {
+        //             "type": "announcement_item",
+        //             "settings": {
+        //                 "text": "5-Star Reviews"
+        //             }
+        //         }
+        //     },
+        //     "block_order": [
+        //         "announcement_1",
+        //         "announcement_2",
+        //         "announcement_3",
+        //         "announcement_4",
+        //         "announcement_5",
+        //         "announcement_6",
+        //         "announcement_7",
+        //         "announcement_8",
+        //         "announcement_9",
+        //         "announcement_10"
+        //     ],
+        //     "settings": {
+        //         "enable": true,
+        //         "bg_color": "#000000",
+        //         "text_color": "#FFFFFF",
+        //         "speed": 30,
+        //         "pause_on_hover": true,
+        //         "gap": 12,
+        //         "padding_y": 16,
+        //         "font_size": 16,
+        //         "font_weight": "normal",
+        //         "icon_size": 32
+        //     }
+        // },
         "hero": {
             "type": "hero",
             "blocks": {
@@ -43,7 +131,7 @@
             }
         },
         "groov-everyday": {
-            "type": "groov-everyday",
+            "type": "groov-everyday"
         },
         "groov-cta": {
             "type": "groov-cta",
@@ -61,37 +149,6 @@
                 "block_titulo_1"
             ]
         },
-        // "section_footwear": {
-        //     "type": "section-footwear",
-        //     "blocks": {
-        //         "description_1": {
-        //             "type": "description",
-        //             "settings": {
-        //                 "title": "Algorithimically-Optimized"
-        //             }
-        //         },
-        //         "description_2": {
-        //             "type": "description",
-        //             "settings": {
-        //                 "title": "Premium Memory Foam"
-        //             }
-        //         },
-        //         "description_3": {
-        //             "type": "description",
-        //             "settings": {
-        //                 "title": "Fully Customized to Your Foot Shape"
-        //             }
-        //         }
-        //     },
-        //     "block_order": [
-        //         "description_1",
-        //         "description_2",
-        //         "description_3"
-        //     ],
-        //     "settings": {
-        //         "title": "The Next Dimension of Footwear"
-        //     }
-        // },
         "section_cards": {
             "type": "section-cards",
             "blocks": {
@@ -133,21 +190,6 @@
                 "footer_subtitle": "You deserve the same."
             }
         },
-        // "section_wireframe": {
-        //     "type": "section-wireframe",
-        //     "settings": {
-        //         "heading": "Built by science, with performance, protection and comfort in mind",
-        //         "title_1": "Straight to your door, ready to wear",
-        //         "description_1": "We ship your custom Groovs to your door in less than a week, ready to be inserted into every pair of shoes you own.",
-        //         "title_2": "The perfect fit, every time",
-        //         "description_2": "Every Groov is made-to-order. Meaning no extra inventory, no extra waste, and no undue harm to our planet.",
-        //         "mobile_video_width": 90
-        //     }
-        // },
-        // "section_new": {
-        //     "type": "section-new",
-        //     "settings": {}
-        // },
         "section_tabs": {
             "type": "section-tabs",
             "settings": {}
@@ -248,7 +290,7 @@
                 "review_f6f6WB": {
                     "type": "review",
                     "settings": {
-                        "author_name": "Alex W.",
+                        "author_name": "Alex W.",
                         "author_title": "Salesperson",
                         "review_text": "They have been a game changer for me. My lower back has been way better since using the inserts, typically i have lower back pain at end of the day and with these I have not experienced that for some time.",
                         "author_image": "shopify:\/\/shop_images\/image_fx_9.png"
@@ -268,7 +310,7 @@
                     "settings": {
                         "author_name": "Maurice Allen",
                         "author_title": "Long Drive Golf World Champion",
-                        "review_text": "I’ve won 2 world championships with them in my shoes! I love Groov.",
+                        "review_text": "I've won 2 world championships with them in my shoes! I love Groov.",
                         "author_image": "shopify:\/\/shop_images\/1681263700093.jpg"
                     }
                 }
@@ -294,13 +336,12 @@
         }
     },
     "order": [
+        
         "hero",
         "groov-everyday",
+        // "announcement-scroll",
         "groov-cta",
-        // "section_footwear",
         "section_cards",
-        // "section_wireframe",
-        // "section_new",
         "section_tabs",
         "section_reviews"
     ]

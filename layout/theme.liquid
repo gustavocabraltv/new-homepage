@@ -389,9 +389,11 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.js" defer="defer"></script>
     {% endcomment %}
   </head>
-
+ 
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %} {% unless template == 'index' %} body-with-background{% endunless %}  {% unless template contains "account" or template contains 'login' %} {{ page_title | handle }} {{ template.name }} {% endunless %} temp-{{ template }}">
     {% section 'jahin-custom-fonts' %}
+  
+    {% sections 'announcement-group' %}
     <div class="loader" style="display: none;">
       <div class="spinner"></div>
     </div>

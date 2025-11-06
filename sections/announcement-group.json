@@ -1,0 +1,98 @@
+{
+    "name": "Announcement Group",
+    "type": "header",
+    "sections": {
+      "announcement-scroll": {
+        "type": "announcement-scroll",
+        "blocks": {
+          "announcement_1": {
+            "type": "announcement_item",
+            "settings": {
+              "text": "Free Shipping Worldwide"
+            }
+          },
+          "announcement_2": {
+            "type": "announcement_item",
+            "settings": {
+              "text": "HSA/FSA Eligible"
+            }
+          },
+          "announcement_3": {
+            "type": "announcement_item",
+            "settings": {
+              "text": "30-Day Money Back Guarantee"
+            }
+          },
+          "announcement_4": {
+            "type": "announcement_item",
+            "settings": {
+              "text": "Made in USA"
+            }
+          },
+          "announcement_5": {
+            "type": "announcement_item",
+            "settings": {
+              "text": "Custom Fit Technology"
+            }
+          },
+          "announcement_6": {
+            "type": "announcement_item",
+            "settings": {
+              "text": "Trusted by Athletes"
+            }
+          },
+          "announcement_7": {
+            "type": "announcement_item",
+            "settings": {
+              "text": "Premium Materials"
+            }
+          },
+          "announcement_8": {
+            "type": "announcement_item",
+            "settings": {
+              "text": "Fast Delivery"
+            }
+          },
+          "announcement_9": {
+            "type": "announcement_item",
+            "settings": {
+              "text": "Eco-Friendly Production"
+            }
+          },
+          "announcement_10": {
+            "type": "announcement_item",
+            "settings": {
+              "text": "5-Star Reviews"
+            }
+          }
+        },
+        "block_order": [
+          "announcement_1",
+          "announcement_2",
+          "announcement_3",
+          "announcement_4",
+          "announcement_5",
+          "announcement_6",
+          "announcement_7",
+          "announcement_8",
+          "announcement_9",
+          "announcement_10"
+        ],
+        "settings": {
+          "enable": true,
+          "bg_color": "#000000",
+          "text_color": "#FFFFFF",
+          "speed": 30,
+          "pause_on_hover": true,
+          "gap": 12,
+          "padding_y": 16,
+          "font_size": 16,
+          "font_weight": "normal",
+          "icon_size": 32
+        }
+      }
+    },
+    "order": [
+      "announcement-scroll"
+    ]
+  }

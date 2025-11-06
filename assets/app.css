@@ -816,6 +816,10 @@ video {
   margin-top: 8px;
 }
 
+.tw-mb-12 {
+  margin-bottom: 3rem;
+}
+
 .tw-line-clamp-\[5\] {
   overflow: hidden;
   display: -webkit-box;
@@ -1082,6 +1086,10 @@ video {
   flex: blue;
 }
 
+.tw-flex-shrink-0 {
+  flex-shrink: 0;
+}
+
 .-tw-translate-x-1\/2 {
   --tw-translate-x: -50%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -1260,6 +1268,26 @@ video {
   gap: 0px;
 }
 
+.tw-gap-24 {
+  gap: 6rem;
+}
+
+.tw-gap-48 {
+  gap: 12rem;
+}
+
+.tw-gap-2 {
+  gap: 0.5rem;
+}
+
+.tw-gap-\[400px\] {
+  gap: 400px;
+}
+
+.tw-gap-\[0px\] {
+  gap: 0px;
+}
+
 .tw-gap-x-\[8px\] {
   -moz-column-gap: 8px;
        column-gap: 8px;
@@ -1288,6 +1316,10 @@ video {
 
 .tw-overflow-hidden {
   overflow: hidden;
+}
+
+.tw-whitespace-nowrap {
+  white-space: nowrap;
 }
 
 .tw-rounded-\[0px\] {
@@ -1328,6 +1360,10 @@ video {
 
 .tw-rounded-xl {
   border-radius: 0.75rem;
+}
+
+.tw-rounded-2xl {
+  border-radius: 1rem;
 }
 
 .tw-rounded-b-\[0px\] {
@@ -1755,6 +1791,16 @@ video {
 .\!tw-px-2 {
   padding-left: 0.5rem !important;
   padding-right: 0.5rem !important;
+}
+
+.tw-py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.tw-py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .\!tw-pb-\[48px\] {

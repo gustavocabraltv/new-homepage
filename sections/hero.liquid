@@ -1,23 +1,40 @@
-
-
 <style>
-  .hero { 
-    background: linear-gradient(180deg, #C9E3FA 0%, #EDF3F9 100%);
+  .hero {
+    background: linear-gradient(180deg, #c9e3fa 0%, #edf3f9 100%);
   }
 
   .first-benefit-text {
     padding-left: 4px;
     padding-right: 4px;
   }
-  
+
   @media (min-width: 768px) {
     .first-benefit-text {
       padding-left: 0;
       padding-right: 0;
     }
   }
-  
 
+  /* Animação de scroll infinito */
+  {% comment %} @keyframes scroll-left {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  } {% endcomment %}
+
+  .animate-scroll {
+    animation: scroll-left 30s linear infinite;
+    display: flex;
+    gap: 12rem; /* equivalente a tw-gap-48 */
+  }
+
+  /* Opcional: Pausa a animação ao hover */
+  .scroll-container:hover .animate-scroll {
+    animation-play-state: paused;
+  }
 </style>
 <div class="hero section-{{ section.id }}-padding">
   {% assign hero_heading = section.blocks[0].settings.heading %}
@@ -35,7 +52,7 @@
         <h2 class="md:tw-text-[48px] tw-text-[32px] tw-font-semibold tw-leading-none tw-text-center md:tw-text-left">
           {{ hero_heading }}
         </h2>
-        <button class="tw-bg-[#309FF7] tw-w-full tw-text-white tw-py-5 tw-rounded-full">Discover Groov</button>
+        <button class="tw-bg-[#309FF7] tw-w-full tw-text-white tw-py-5 tw-rounded-full">Explore Groov</button>
 
         <div
           class="
@@ -52,31 +69,99 @@
       </div>
     </div>
 
-    <div class="tw-py-[32px] tw-flex  tw-leading-tight tw-font-normal tw-text-[#49566E]
-                md:tw-gap-12 md:tw-justify-start tw-justify-between
-      ">
+    <div
+      class="
+        tw-py-[32px] tw-flex  tw-leading-tight tw-font-normal tw-text-[#49566E]
+        md:tw-gap-12 md:tw-justify-start tw-justify-between
+      "
+    >
+      {% assign benefit_index = 0 %}
       {% for block in section.blocks %}
         {% if block.type == 'benefit' %}
-         {% assign benefit_index = benefit_index | plus: 1 %}
+          {% assign benefit_index = benefit_index | plus: 1 %}
+
+          {% comment %} Define o ícone padrão baseado no índice {% endcomment %}
+          {% assign default_icon = 'HSA.svg' %}
+          {% if benefit_index == 2 %}
+            {% assign default_icon = 'free-shipping.svg' %}
+          {% elsif benefit_index == 3 %}
+            {% assign default_icon = 'mobile-scan.svg' %}
+          {% endif %}
+
           <div
             id="item-benefit"
             class=" md:!tw-flex-initial tw-flex-1 tw-items-center tw-flex-col tw-justify-center tw-flex tw-gap-3 tw-text-center md:tw-flex-row"
             {{ block.shopify_attributes }}
           >
             <img
-              src="{{ block.settings.icon | default: 'HSA.svg' | asset_url }}"
+              src="{{ block.settings.icon | default: default_icon | asset_url }}"
               alt="{{ block.settings.text }}"
               loading="lazy"
               width="30"
               height="auto"
             >
             <p class="{% if benefit_index == 1 %}first-benefit-text{% endif %}">{{ block.settings.text }}</p>
-      
           </div>
         {% endif %}
       {% endfor %}
     </div>
   </div>
+
+
+  {% comment %} <div class="tw-w-full tw-bg-black tw-py-[16px] tw-text-white tw-overflow-hidden scroll-container">
+    <div class="animate-scroll">
+      <!-- Primeiro conjunto de itens -->
+      <div class="tw-text-white tw-flex tw-items-center tw-gap-4 tw-whitespace-nowrap tw-flex-shrink-0">
+        <img src="{{ 'shipping-white.svg' | asset_url }}" alt="hero" loading="lazy" width="32" height="auto">
+        <p>Free Shipping Worldwide</p>
+      </div>
+
+      <div class="tw-text-white tw-flex tw-items-center tw-gap-4 tw-whitespace-nowrap tw-flex-shrink-0">
+        <img src="{{ 'shipping-white.svg' | asset_url }}" alt="hero" loading="lazy" width="32" height="auto">
+        <p>Free Shipping Worldwide</p>
+      </div>
+
+      <div class="tw-text-white tw-flex tw-items-center tw-gap-4 tw-whitespace-nowrap tw-flex-shrink-0">
+        <img src="{{ 'shipping-white.svg' | asset_url }}" alt="hero" loading="lazy" width="32" height="auto">
+        <p>Free Shipping Worldwide</p>
+      </div>
+
+      <!-- Segundo conjunto (cópia exata para continuidade) -->
+      <div class="tw-text-white tw-flex tw-items-center tw-gap-4 tw-whitespace-nowrap tw-flex-shrink-0">
+        <img src="{{ 'shipping-white.svg' | asset_url }}" alt="hero" loading="lazy" width="32" height="auto">
+        <p>Free Shipping Worldwide</p>
+      </div>
+
+      <div class="tw-text-white tw-flex tw-items-center tw-gap-4 tw-whitespace-nowrap tw-flex-shrink-0">
+        <img src="{{ 'shipping-white.svg' | asset_url }}" alt="hero" loading="lazy" width="32" height="auto">
+        <p>Free Shipping Worldwide</p>
+      </div>
+
+      <div class="tw-text-white tw-flex tw-items-center tw-gap-4 tw-whitespace-nowrap tw-flex-shrink-0">
+        <img src="{{ 'shipping-white.svg' | asset_url }}" alt="hero" loading="lazy" width="32" height="auto">
+        <p>Free Shipping Worldwide</p>
+      </div>
+
+      <!-- Terceiro conjunto (mais uma cópia para garantir fluidez) -->
+      <div class="tw-text-white tw-flex tw-items-center tw-gap-4 tw-whitespace-nowrap tw-flex-shrink-0">
+        <img src="{{ 'shipping-white.svg' | asset_url }}" alt="hero" loading="lazy" width="32" height="auto">
+        <p>Free Shipping Worldwide</p>
+      </div>
+
+      <div class="tw-text-white tw-flex tw-items-center tw-gap-4 tw-whitespace-nowrap tw-flex-shrink-0">
+        <img src="{{ 'shipping-white.svg' | asset_url }}" alt="hero" loading="lazy" width="32" height="auto">
+        <p>Free Shipping Worldwide</p>
+      </div>
+
+      <div class="tw-text-white tw-flex tw-items-center tw-gap-4 tw-whitespace-nowrap tw-flex-shrink-0">
+        <img src="{{ 'shipping-white.svg' | asset_url }}" alt="hero" loading="lazy" width="32" height="auto">
+        <p>Free Shipping Worldwide</p>
+      </div>
+    </div>
+  </div> {% endcomment %}
+
+
+
 </div>
 
 {% schema %}
